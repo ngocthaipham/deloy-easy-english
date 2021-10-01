@@ -42,6 +42,9 @@ import EditCourse from "layouts/dashboard/components/ListCourse/EditCourse";
 import ListLevel from "layouts/dashboard/components/ListLevel/ListLevel";
 import AddLevel from "layouts/dashboard/components/ListLevel/AddLevel";
 import EditLevel from "layouts/dashboard/components/ListLevel/EditLevel";
+import LearnedWord from "layouts/dashboard/components/ListLevel/LearnedWord";
+import UnLearnedWord from "layouts/dashboard/components/ListLevel/UnLearnedWord";
+import Learn from "layouts/dashboard/components/Learn/Learn";
 import ListWord from "layouts/dashboard/components/ListWord/ListWord";
 import AddWord from "layouts/dashboard/components/ListWord/AddWord";
 import EditWord from "layouts/dashboard/components/ListWord/EditWord";
@@ -112,6 +115,27 @@ const routes = [
     key: "EditLevel",
     route: "/dashboard/:idSource/level/edit/:idLevel/:level/:imageLevel",
     component: EditLevel,
+  },
+  {
+    type: "route",
+    name: "LearnedWord",
+    key: "LearnedWord",
+    route: "/dashboard/:idSource/level/learned/:idLevel/:level",
+    component: LearnedWord,
+  },
+  {
+    type: "route",
+    name: "UnLearnedWord",
+    key: "UnLearnedWord",
+    route: "/dashboard/:idSource/level/unlearned/:idLevel/:level",
+    component: UnLearnedWord,
+  },
+  {
+    type: "route",
+    name: "Learn",
+    key: "Learn",
+    route: "/dashboard/:idSource/level/:idLevel/:level/learn",
+    component: Learn,
   },
   {
     type: "route",

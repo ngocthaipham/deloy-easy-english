@@ -41,9 +41,11 @@ const ListLevel = () => {
                 </Link>
               </div>
               <div className="action-level-item">
-                <SuiButton variant="outlined" size="small" buttonColor="info">
-                  Learn
-                </SuiButton>
+                <Link to={`/dashboard/${idSource}/level/${level.idLevel}/${level.level}/learn`}>
+                  <SuiButton variant="outlined" size="small" buttonColor="info">
+                    Learn
+                  </SuiButton>
+                </Link>
               </div>
               <div className="action-level-item">
                 <Link
@@ -55,15 +57,19 @@ const ListLevel = () => {
                 </Link>
               </div>
               <div className="action-level-item">
-                <SuiButton variant="outlined" size="small" buttonColor="info">
-                  Learned Word
-                </SuiButton>
+                <Link to={`/dashboard/${idSource}/level/learned/${level.idLevel}/${level.level}`}>
+                  <SuiButton variant="outlined" size="small" buttonColor="info">
+                    Learned Word
+                  </SuiButton>
+                </Link>
               </div>
 
               <div className="action-level-item">
-                <SuiButton variant="outlined" size="small" buttonColor="info">
-                  Unlearned Word
-                </SuiButton>
+                <Link to={`/dashboard/${idSource}/level/unlearned/${level.idLevel}/${level.level}`}>
+                  <SuiButton variant="outlined" size="small" buttonColor="info">
+                    Unlearned Word
+                  </SuiButton>
+                </Link>
               </div>
               <div className="action-level-item">
                 <SuiButton variant="outlined" size="small" buttonColor="info">
