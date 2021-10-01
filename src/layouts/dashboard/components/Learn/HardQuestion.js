@@ -111,7 +111,6 @@ const HardQuestion = (props) => {
         props.updateClicked(false);
       }, 2000);
     }
-    console.log(currentQuestion);
     if (currentQuestion < 2) {
       setTimeout(() => {
         props.updateClicked(false);
