@@ -60,14 +60,16 @@ const RatingList = (props) => {
             <h4 className="modal-title">Rate</h4>
           </div>
           {ratingList.map((rating) => (
-            <p>
-              {rating.byUser} :{" "}
-              <Rating
-                initialRating={rating.star}
-                emptySymbol={<img style={{ fontSize: "32px" }} alt="rating" src={EmptyStar} />}
-                fullSymbol={<img style={{ height: "32px" }} alt="rating" src={Star} />}
-              />
-            </p>
+            <div key={rating.byUser}>
+              <p>
+                {rating.byUser} :{" "}
+                <Rating
+                  initialRating={rating.star}
+                  emptySymbol={<img style={{ fontSize: "32px" }} alt="rating" src={EmptyStar} />}
+                  fullSymbol={<img style={{ height: "32px" }} alt="rating" src={Star} />}
+                />
+              </p>
+            </div>
           ))}
           <div className="modal-footer">
             {/* <button

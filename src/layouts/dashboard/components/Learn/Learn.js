@@ -361,7 +361,7 @@ const Learn = () => {
                   //       );
                   //     }}
                   //   >
-                  <div className="answer">
+                  <div className="answer" key={index}>
                     <SuiBox>
                       <Card sx={{ height: "80px", justifyContent: "center", margin: "0px 5px" }}>
                         <SuiButton

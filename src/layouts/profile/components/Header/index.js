@@ -86,7 +86,7 @@ function Header() {
       <SuiBox customClass={classes.profileHeader_background} />
       <Card className={classes.profileHeader_profile}>
         {user.map((item) => (
-          <Grid container spacing={3} alignItems="center">
+          <Grid container spacing={3} alignItems="center" key={item.idUser}>
             <Grid item>
               <SuiAvatar
                 src={`http://localhost:5000/images/${item.userAvatar}`}
