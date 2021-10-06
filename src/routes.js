@@ -156,7 +156,7 @@ const routes = [
     name: "EditWord",
     key: "EditWord",
     route:
-      "/dashboard/:idSource/level/:idLevel/:level/word/edit/:id/:vocab/:meaning/:imageWord/:audioWord",
+    "/dashboard/:idSource/level/:idLevel/:level/word/edit/:id/:vocab/:meaning/:imageWord/:audioWord",
     component: EditWord,
   },
   {
@@ -165,24 +165,6 @@ const routes = [
     key: "SpeedTest",
     route: "/dashboard/:idSource/level/:idLevel/:level/word/speedtest",
     component: SpeedTest,
-  },
-  {
-    type: "collapse",
-    name: "Favorite Course",
-    key: "Favorite",
-    route: "/favorite",
-    icon: <Office size="12px" />,
-    component: Favorite,
-    noCollapse: true,
-  },
-  {
-    type: "collapse",
-    name: "Private Course",
-    key: "Private",
-    route: "/private",
-    icon: <Office size="12px" />,
-    component: Private,
-    noCollapse: true,
   },
   {
     type: "collapse",
@@ -206,6 +188,24 @@ const routes = [
     key: "CourseDetail",
     route: "/tables/:idSource/:idLevel",
     component: CourseDetail,
+  },
+  {
+    type: "collapse",
+    name: "Favorite Course",
+    key: "Favorite",
+    route: "/favorite",
+    icon: <Office size="12px" />,
+    component: Favorite,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Private Course",
+    key: "Private",
+    route: "/private",
+    icon: <Office size="12px" />,
+    component: Private,
+    noCollapse: true,
   },
   {
     type: "collapse",
