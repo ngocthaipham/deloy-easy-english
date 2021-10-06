@@ -24,7 +24,7 @@ const Explore = () => {
     });
   }, [isClicked]);
   useEffect(() => {
-    Axios.get(`http://localhost:5000/sources/${0}/page${currentPage}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com/sources/${0}/page${currentPage}`).then((response) => {
       setCourseList(response.data.result);
       setTotalCourse(response.data.totalCourse);
       setCoursePerPage(response.data.coursePerPage);
