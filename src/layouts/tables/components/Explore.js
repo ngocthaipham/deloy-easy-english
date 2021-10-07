@@ -32,6 +32,8 @@ const Explore = () => {
     });
   }, [isClicked]);
 
+  console.log(process.env.REACT_APP_API_ENDPOINT);
+
   const handleShowMorePosts = () => {
     setCurrentPage(currentPage + 1);
     setIsClicked(!isClicked);
