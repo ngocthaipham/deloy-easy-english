@@ -19,12 +19,12 @@ const Explore = () => {
   const [cookies] = useCookies();
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com/favorites/${cookies.userName}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/favorites/${cookies.userName}`).then((response) => {
       setFavoriteCourseList(response.data.result);
     });
   }, [isClicked]);
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com/sources/${0}/page${currentPage}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${0}/page${currentPage}`).then((response) => {
       setCourseList(response.data.result);
       setTotalCourse(response.data.totalCourse);
       setCoursePerPage(response.data.coursePerPage);
@@ -37,7 +37,7 @@ const Explore = () => {
     setIsClicked(!isClicked);
   };
   function addToFavorite(id) {
-    Axios.post(`https://server-easyenglish.herokuapp.com/favorite/${cookies.userName}`, {
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/favorite/${cookies.userName}`, {
       idSource: id,
     }).then((response) => {
       alert(response.data);
@@ -46,7 +46,7 @@ const Explore = () => {
   }
 
   function removeFromFavorite(id) {
-    Axios.put(`https://server-easyenglish.herokuapp.com/favorite/${cookies.userName}`, {
+    Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/favorite/${cookies.userName}`, {
       idSource: id,
     }).then((response) => {
       alert(response.data);
@@ -67,7 +67,7 @@ const Explore = () => {
                   <div className="course-list-wrapper">
                     <Link to={`/tables/${course.idSource}`}>
                       <DefaultProjectCard
-                        image={`https://server-easyenglish.herokuapp.com/images/${course.imageSource}`}
+                        image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageSource}`}
                         title={`${course.nameSource}`}
                         description={`By ${course.userName}`}
                       />
@@ -106,7 +106,7 @@ const Explore = () => {
                   <div className="course-list-wrapper">
                     <Link to={`/tables/${course.idSource}`}>
                       <DefaultProjectCard
-                        image={`https://server-easyenglish.herokuapp.com/images/${course.imageSource}`}
+                        image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageSource}`}
                         title={`${course.nameSource}`}
                         description={`By ${course.userName}`}
                       />
