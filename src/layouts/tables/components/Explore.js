@@ -19,7 +19,7 @@ const Explore = () => {
   const [cookies] = useCookies();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/favorites/${cookies.userName}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com/favorites/${cookies.userName}`).then((response) => {
       setFavoriteCourseList(response.data.result);
     });
   }, [isClicked]);
@@ -37,7 +37,7 @@ const Explore = () => {
     setIsClicked(!isClicked);
   };
   function addToFavorite(id) {
-    Axios.post(`http://localhost:5000/favorite/${cookies.userName}`, {
+    Axios.post(`https://server-easyenglish.herokuapp.com/favorite/${cookies.userName}`, {
       idSource: id,
     }).then((response) => {
       alert(response.data);
@@ -46,7 +46,7 @@ const Explore = () => {
   }
 
   function removeFromFavorite(id) {
-    Axios.put(`http://localhost:5000/favorite/${cookies.userName}`, {
+    Axios.put(`https://server-easyenglish.herokuapp.com/favorite/${cookies.userName}`, {
       idSource: id,
     }).then((response) => {
       alert(response.data);
@@ -67,7 +67,7 @@ const Explore = () => {
                   <div className="course-list-wrapper">
                     <Link to={`/tables/${course.idSource}`}>
                       <DefaultProjectCard
-                        image={`http://localhost:5000/images/${course.imageSource}`}
+                        image={`https://server-easyenglish.herokuapp.com/images/${course.imageSource}`}
                         title={`${course.nameSource}`}
                         description={`By ${course.userName}`}
                       />
@@ -106,7 +106,7 @@ const Explore = () => {
                   <div className="course-list-wrapper">
                     <Link to={`/tables/${course.idSource}`}>
                       <DefaultProjectCard
-                        image={`http://localhost:5000/images/${course.imageSource}`}
+                        image={`https://server-easyenglish.herokuapp.com/images/${course.imageSource}`}
                         title={`${course.nameSource}`}
                         description={`By ${course.userName}`}
                       />
