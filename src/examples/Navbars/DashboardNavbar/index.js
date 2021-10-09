@@ -42,6 +42,8 @@ import styles from "examples/Navbars/DashboardNavbar/styles";
 
 // Soft UI Dashboard React context
 import { useSoftUIController } from "context";
+import { useCookies } from "react-cookie";
+
 
 // Images
 import team2 from "assets/images/team-2.jpg";
@@ -54,6 +56,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const [openMenu, setOpenMenu] = useState(false);
   const classes = styles({ transparentNavbar, absolute, light, isMini });
   const route = useLocation().pathname.split("/").slice(1);
+  const [cookies] = useCookies();
+
 
   useEffect(() => {
     // Setting the navbar type
@@ -145,7 +149,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
               color={light ? "white" : "inherit"}
               customClass={classes.navbar_section_desktop}
             >
-              <Link to="/authentication/sign-in/basic">
+              {cookies.userId ? 
+              <Link to="/profile">
                 <IconButton className={classes.navbar_icon_button}>
                   <Icon className={light ? "text-white" : "text-dark"}>account_circle</Icon>
                   <SuiTypography
@@ -153,10 +158,23 @@ function DashboardNavbar({ absolute, light, isMini }) {
                     fontWeight="medium"
                     textColor={light ? "white" : "dark"}
                   >
-                    Sign in
+                    {cookies.userName}
                   </SuiTypography>
                 </IconButton>
               </Link>
+              :  <Link to="/authentication/sign-in/basic">
+              <IconButton className={classes.navbar_icon_button}>
+                <Icon className={light ? "text-white" : "text-dark"}>account_circle</Icon>
+                <SuiTypography
+                  variant="button"
+                  fontWeight="medium"
+                  textColor={light ? "white" : "dark"}
+                >
+                  Sign in
+                </SuiTypography>
+              </IconButton>
+            </Link>
+}
               <IconButton
                 size="small"
                 color="inherit"

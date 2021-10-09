@@ -44,7 +44,8 @@ import theme from "assets/theme";
 import themeRTL from "assets/theme/theme-rtl";
 
 // Soft UI Dashboard PRO React routes
-import routes from "routes";
+import route from "routes";
+import { useCookies } from "react-cookie";
 
 // Soft UI Dashboard PRO React contexts
 import { useSoftUIController } from "context";
@@ -58,6 +59,7 @@ export default function App() {
   const { direction, layout, openConfigurator } = controller;
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+  const [cookies] = useCookies();
 
   // JSS presets for the rtl
   const jss = create({
@@ -132,17 +134,30 @@ export default function App() {
       <StylesProvider jss={jss}>
         <ThemeProvider theme={themeRTL}>
           <CssBaseline />
-          {layout === "dashboard" && (
+          {layout === "explore" && cookies.userId ? (
             <>
-              <Sidenav routes={routes} />
+              <Sidenav routes={route.routes} />
+              <Configurator />
+              {configsButton}
+            </>
+          ) : (
+            <>
+              <Sidenav routes={route.unSignInRoute} />
               <Configurator />
               {configsButton}
             </>
           )}
+          {/* {layout === "explore" && !cookies.userId && (
+            <>
+              <Sidenav routes={route.unSignInRoute} />
+              <Configurator />
+              {configsButton}
+            </>
+          )} */}
           {layout === "vr" && <Configurator />}
           <Switch>
-            {getRoutes(routes)}
-            <Redirect from="*" to="/dashboard" />
+            {cookies.userId ? getRoutes(route.routes) : getRoutes(route.unSignInRoute)}
+            <Redirect from="*" to="/explore" />
           </Switch>
         </ThemeProvider>
       </StylesProvider>
@@ -152,17 +167,30 @@ export default function App() {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {layout === "dashboard" && (
+        {layout === "dashboard" && cookies.userId ? (
           <>
-            <Sidenav routes={routes} />
+            <Sidenav routes={route.routes} />
+            <Configurator />
+            {configsButton}
+          </>
+        ) : (
+          <>
+            <Sidenav routes={route.unSignInRoute} />
             <Configurator />
             {configsButton}
           </>
         )}
+        {/* {layout === "dashboard" && !cookies.userId && (
+          <>
+            <Sidenav routes={route.unSignInRoute} />
+            <Configurator />
+            {configsButton}
+          </>
+        )} */}
         {layout === "vr" && <Configurator />}
         <Switch>
-          {getRoutes(routes)}
-          <Redirect from="*" to="/dashboard" />
+          {cookies.userId ? getRoutes(route.routes) : getRoutes(route.unSignInRoute)}
+          <Redirect from="*" to="/explore" />
         </Switch>
       </ThemeProvider>
     </StyledEngineProvider>

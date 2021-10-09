@@ -42,7 +42,7 @@ const AddWord = () => {
     }).then(() => {
       setPreviewImage("http://localhost:5000/images/image1627300361179.jpg");
       setPreviewAudio();
-      history.push(`/dashboard/${idSource}/level/${idLevel}/${level}/word`);
+      history.push(`/home/${idSource}/level/${idLevel}/${level}/word`);
     });
   };
   return (

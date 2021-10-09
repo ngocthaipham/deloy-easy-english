@@ -34,7 +34,7 @@ const AddLevel = () => {
       },
     }).then(() => {
       setPreviewImage("http://localhost:5000/images/image1627300361179.jpg");
-      history.push(`/dashboard/${idSource}/level`);
+      history.push(`/home/${idSource}/level`);
     });
   };
   return (

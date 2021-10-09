@@ -39,7 +39,7 @@ const EditWord = () => {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      history.push(`/dashboard/${idSource}/level/${idLevel}/${level}/word`);
+      history.push(`/home/${idSource}/level/${idLevel}/${level}/word`);
     });
   };
   return (

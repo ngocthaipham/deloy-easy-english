@@ -31,7 +31,7 @@ const EditLevel = () => {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      history.push(`/dashboard/${idSource}/level`);
+      history.push(`/home/${idSource}/level`);
     });
   };
   return (

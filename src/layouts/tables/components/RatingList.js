@@ -21,15 +21,6 @@ const RatingList = (props) => {
   }, [showModal]);
   if (!showModal) {
     return (
-      //   <button
-      //     type="button"
-      //     className="btn"
-      //     onClick={() => {
-      //       setShowModal(true);
-      //     }}
-      //   >
-      //     Rate ({props.countRating})
-      //   </button>
       <div style={{ padding: "5px" }}>
         <SuiButton
           variant="outlined"
@@ -46,9 +37,6 @@ const RatingList = (props) => {
   }
   return (
     <>
-      {/* <button type="button" className="btn">
-        Rate ({props.countRating})
-      </button> */}
       <div style={{ padding: "5px" }}>
         <SuiButton variant="outlined" size="small" buttonColor="info">
           Rate ({props.countRating})
@@ -72,15 +60,6 @@ const RatingList = (props) => {
             </div>
           ))}
           <div className="modal-footer">
-            {/* <button
-              type="button"
-              className="modal-btn"
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              Close
-            </button> */}
             <SuiButton
               variant="outlined"
               size="small"

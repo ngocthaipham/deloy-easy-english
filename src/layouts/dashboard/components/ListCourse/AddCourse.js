@@ -34,7 +34,7 @@ const AddCourse = () => {
       },
     }).then(() => {
       setPreviewImage("http://localhost:5000/images/image1627300361179.jpg");
-      history.push(`/dashboard`);
+      history.push(`/home`);
     });
   };
   return (

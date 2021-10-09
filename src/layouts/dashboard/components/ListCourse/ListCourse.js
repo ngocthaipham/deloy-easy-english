@@ -19,7 +19,7 @@ const ListCourse = () => {
   // const classes = styles();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/sources/${cookies.userName}/0/page1`, {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${cookies.userName}/0/page1`, {
       withCredentials: true,
     }).then((response) => {
       setCourseList(response.data.result);
@@ -31,7 +31,7 @@ const ListCourse = () => {
       <div style={{ "padding-bottom": "10px" }}>
         <SuiButton
           component={Link}
-          to="/dashboard/course/new"
+          to="/home/course/new"
           variant="outlined"
           size="small"
           buttonColor="info"
@@ -45,7 +45,7 @@ const ListCourse = () => {
             <div className="card-item" key={course.idSource}>
               <SuiBox p={2}>
                 <DefaultProjectCard
-                  image={`http://localhost:5000/images/${course.imageSource}`}
+                  image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageSource}`}
                   title={`${course.nameSource}`}
                   description={`${course.desSource}`}
                 />
@@ -53,7 +53,7 @@ const ListCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/dashboard/${course.idSource}/level`}
+                      to={`/home/${course.idSource}/level`}
                       variant="outlined"
                       size="small"
                       buttonColor="info"
@@ -64,7 +64,7 @@ const ListCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/dashboard/course/edit/${course.idSource}/${course.nameSource}/${course.desSource}/${course.imageSource}/0`}
+                      to={`/home/course/edit/${course.idSource}/${course.nameSource}/${course.desSource}/${course.imageSource}/0`}
                       variant="outlined"
                       size="small"
                       buttonColor="info"
@@ -75,7 +75,7 @@ const ListCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/dashboard/${course.idSource}/level`}
+                      to={`/home/${course.idSource}/level`}
                       variant="outlined"
                       size="small"
                       buttonColor="error"

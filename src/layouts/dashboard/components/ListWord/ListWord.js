@@ -23,7 +23,7 @@ const ListWord = () => {
   ];
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/words/${idLevel}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/words/${idLevel}`).then((response) => {
       console.log(response.data.result.idLevel);
       setWordList(
         response.data.result.map((word) => ({
@@ -33,7 +33,7 @@ const ListWord = () => {
             <img
               className="word-image"
               style={{ height: "150px", width: "200px" }}
-              src={`http://localhost:5000/images/${word.imageWord}`}
+              src={`${process.env.REACT_APP_API_ENDPOINT}/images/${word.imageWord}`}
               alt="a"
             />
           ),
@@ -42,7 +42,7 @@ const ListWord = () => {
               style={{ "background-color": "transparent", border: "none" }}
               type="button"
               onClick={() => {
-                const audio = new Audio(`http://localhost:5000/audios/${word.audioWord}`);
+                const audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${word.audioWord}`);
                 audio.play();
               }}
             >
@@ -61,7 +61,7 @@ const ListWord = () => {
             <div className="action-word-flex">
               <div className="action-word-item">
                 <Link
-                  to={`/dashboard/${idSource}/level/${idLevel}/${level}/word/edit/${word.id}/${word.vocab}/${word.meaning}/${word.imageWord}/${word.audioWord}`}
+                  to={`/home/${idSource}/level/${idLevel}/${level}/word/edit/${word.id}/${word.vocab}/${word.meaning}/${word.imageWord}/${word.audioWord}`}
                 >
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Edit
@@ -88,7 +88,7 @@ const ListWord = () => {
           <div className="word-btn">
             <SuiButton
               component={Link}
-              to={`/dashboard/${idSource}/level/${idLevel}/${level}/word/new`}
+              to={`/home/${idSource}/level/${idLevel}/${level}/word/new`}
               variant="outlined"
               size="small"
               buttonColor="info"
@@ -100,7 +100,7 @@ const ListWord = () => {
             <SuiButton
               pl={2}
               component={Link}
-              to={`/dashboard/${idSource}/level/${idLevel}/${level}/word/speedtest`}
+              to={`/home/${idSource}/level/${idLevel}/${level}/word/speedtest`}
               variant="outlined"
               size="small"
               buttonColor="info"

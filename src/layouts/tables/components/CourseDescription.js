@@ -54,37 +54,72 @@ const CourseDescription = () => {
       userName: cookies.userName,
     }).then((response) => {
       alert(response.data);
-      history.push(`/dashboard`);
+      history.push(`/home`);
     });
   };
   return (
     <>
-      <div className="course-item-des-container">
-        <DefaultProjectCard
-          image={`http://localhost:5000/images/${imageSource}`}
-          title={`${nameSource}`}
-          description={`${desSource}`}
-        />
-        <div style={{ padding: "5px" }}>
-          <SuiButton
-            variant="outlined"
-            size="small"
-            buttonColor="info"
-            onClick={() => {
-              addCourseFromExplore();
-              addLevelFromExplore();
-              addWordFromExplore();
-            }}
-          >
-            Study
-          </SuiButton>
+      {cookies.userId ? (
+        <div className="course-item-des-container">
+          <DefaultProjectCard
+            image={`http://localhost:5000/images/${imageSource}`}
+            title={`${nameSource}`}
+            description={`${desSource}`}
+          />
+          <div style={{ padding: "5px" }}>
+            <SuiButton
+              variant="outlined"
+              size="small"
+              buttonColor="info"
+              onClick={() => {
+                addCourseFromExplore();
+                addLevelFromExplore();
+                addWordFromExplore();
+              }}
+            >
+              Study
+            </SuiButton>
+          </div>
+          <CourseRating refreshState={refresh} updateRefreshState={update} />
+          <div style={{ display: "flex" }}>
+            <RatingList countRating={countRating} />
+            <Comment
+              countComment={countComment}
+              refreshState={refresh}
+              updateRefreshState={update}
+            />
+          </div>
         </div>
-        <CourseRating refreshState={refresh} updateRefreshState={update} />
-        <div style={{ display: "flex" }}>
-          <RatingList countRating={countRating} />
-          <Comment countComment={countComment} refreshState={refresh} updateRefreshState={update} />
+      ) : (
+        <div className="course-item-des-container">
+          <DefaultProjectCard
+            image={`http://localhost:5000/images/${imageSource}`}
+            title={`${nameSource}`}
+            description={`${desSource}`}
+          />
+
+          <div style={{ display: "flex" }}>
+            <div style={{ padding: "5px" }}>
+              <SuiButton
+                variant="outlined"
+                size="small"
+                buttonColor="info"
+                onClick={() => {
+                  history.push(`/authentication/sign-in`);
+                }}
+              >
+                Study
+              </SuiButton>
+            </div>
+            <RatingList countRating={countRating} />
+            <Comment
+              countComment={countComment}
+              refreshState={refresh}
+              updateRefreshState={update}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

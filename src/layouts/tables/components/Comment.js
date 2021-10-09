@@ -32,15 +32,6 @@ const Comment = (props) => {
   };
   if (!showModal) {
     return (
-      //   <button
-      //     type="button"
-      //     className="btn"
-      //     onClick={() => {
-      //       setShowModal(true);
-      //     }}
-      //   >
-      //     Comment ({props.countComment})
-      //   </button>
       <div style={{ padding: "5px" }}>
         <SuiButton
           variant="outlined"
@@ -57,69 +48,93 @@ const Comment = (props) => {
   }
   return (
     <>
-      {/* <button type="button" className="btn">
-        Comment ({props.countComment})
-      </button> */}
-      <div style={{ padding: "5px" }}>
-        <SuiButton variant="outlined" size="small" buttonColor="info">
-          Comment ({props.countComment})
-        </SuiButton>
-      </div>
-      <div className="modal">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h4 className="modal-title">Comment</h4>
+      {cookies.userId ? (
+        <div>
+          <div style={{ padding: "5px" }}>
+            <SuiButton variant="outlined" size="small" buttonColor="info">
+              Comment ({props.countComment})
+            </SuiButton>
           </div>
-          {/* <div className="modal-body"></div> */}
-          {commentList.map((comments) => (
-            <p key={comments.idComment}>
-              {comments.byUser} : {comments.comment}
+          <div className="modal">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h4 className="modal-title">Comment</h4>
+              </div>
+              {commentList.map((comments) => (
+                <p key={comments.idComment}>
+                  {comments.byUser} : {comments.comment}
+                  <br />
+                </p>
+              ))}
               <br />
-            </p>
-          ))}
-          <br />
-          <p style={{ fontSize: "17px" }}>Write comment : </p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              sendComment();
-              e.target.reset();
-            }}
-          >
-            <input
-              type="text"
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-            />
-            {/* <button type="submit">Send</button> */}
-            <SuiButton type="submit" variant="outlined" size="small" buttonColor="info">
-              Send
-            </SuiButton>
-          </form>
-          <div className="modal-footer">
-            {/* <button
-              type="button"
-              className="modal-btn"
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              Close
-            </button> */}
-            <SuiButton
-              variant="outlined"
-              size="small"
-              buttonColor="error"
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              Close
-            </SuiButton>
+              <p style={{ fontSize: "17px" }}>Write comment : </p>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  sendComment();
+                  e.target.reset();
+                }}
+              >
+                <input
+                  type="text"
+                  onChange={(e) => {
+                    setComment(e.target.value);
+                  }}
+                />
+                <SuiButton type="submit" variant="outlined" size="small" buttonColor="info">
+                  Send
+                </SuiButton>
+              </form>
+              <div className="modal-footer">
+                <SuiButton
+                  variant="outlined"
+                  size="small"
+                  buttonColor="error"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  Close
+                </SuiButton>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div>
+          <div style={{ padding: "5px" }}>
+            <SuiButton variant="outlined" size="small" buttonColor="info">
+              Comment ({props.countComment})
+            </SuiButton>
+          </div>
+          <div className="modal">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h4 className="modal-title">Comment</h4>
+              </div>
+              {commentList.map((comments) => (
+                <p key={comments.idComment}>
+                  {comments.byUser} : {comments.comment}
+                  <br />
+                </p>
+              ))}
+              <br />
+              <div className="modal-footer">
+                <SuiButton
+                  variant="outlined"
+                  size="small"
+                  buttonColor="error"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  Close
+                </SuiButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

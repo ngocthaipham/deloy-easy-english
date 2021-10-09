@@ -19,7 +19,7 @@ const ListLevel = () => {
   ];
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/levels/${idSource}/page1`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/levels/${idSource}/page1`).then((response) => {
       setLevelList(
         response.data.result.map((level) => ({
           Level: level.level,
@@ -27,21 +27,21 @@ const ListLevel = () => {
             <img
               className="level-image"
               style={{ height: "150px", width: "200px" }}
-              src={`http://localhost:5000/images/${level.imageLevel}`}
+              src={`${process.env.REACT_APP_API_ENDPOINT}/images/${level.imageLevel}`}
               alt="a"
             />
           ),
           Action: (
             <div className="action-level-flex">
               <div className="action-level-item">
-                <Link to={`/dashboard/${idSource}/level/${level.idLevel}/${level.level}/word`}>
+                <Link to={`/home/${idSource}/level/${level.idLevel}/${level.level}/word`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     View
                   </SuiButton>
                 </Link>
               </div>
               <div className="action-level-item">
-                <Link to={`/dashboard/${idSource}/level/${level.idLevel}/${level.level}/learn`}>
+                <Link to={`/home/${idSource}/level/${level.idLevel}/${level.level}/learn`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Learn
                   </SuiButton>
@@ -49,7 +49,7 @@ const ListLevel = () => {
               </div>
               <div className="action-level-item">
                 <Link
-                  to={`/dashboard/${idSource}/level/edit/${level.idLevel}/${level.level}/${level.imageLevel}`}
+                  to={`/home/${idSource}/level/edit/${level.idLevel}/${level.level}/${level.imageLevel}`}
                 >
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Edit
@@ -57,7 +57,7 @@ const ListLevel = () => {
                 </Link>
               </div>
               <div className="action-level-item">
-                <Link to={`/dashboard/${idSource}/level/learned/${level.idLevel}/${level.level}`}>
+                <Link to={`/home/${idSource}/level/learned/${level.idLevel}/${level.level}`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Learned Word
                   </SuiButton>
@@ -65,7 +65,7 @@ const ListLevel = () => {
               </div>
 
               <div className="action-level-item">
-                <Link to={`/dashboard/${idSource}/level/unlearned/${level.idLevel}/${level.level}`}>
+                <Link to={`/home/${idSource}/level/unlearned/${level.idLevel}/${level.level}`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Unlearned Word
                   </SuiButton>
@@ -94,7 +94,7 @@ const ListLevel = () => {
         <div>
           <SuiButton
             component={Link}
-            to={`/dashboard/${idSource}/level/new`}
+            to={`/home/${idSource}/level/new`}
             variant="outlined"
             size="small"
             buttonColor="info"

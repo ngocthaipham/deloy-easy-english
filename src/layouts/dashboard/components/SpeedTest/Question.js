@@ -24,7 +24,7 @@ const Question = (props) => {
   const questionList = [];
   let audio = new Audio();
   useEffect(() => {
-    Axios.get(`http://localhost:5000/vocabs/${idLevel}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/vocabs/${idLevel}`).then((response) => {
       shuffle(response.data);
       setWordList(response.data);
     });
@@ -49,7 +49,7 @@ const Question = (props) => {
           <img
             className="test-image"
             style={{ height: "500px", width: "750px" }}
-            src={`http://localhost:5000/images/${item.imageWord}`}
+            src={`${process.env.REACT_APP_API_ENDPOINT}/images/${item.imageWord}`}
             alt="speedtest"
           />
         ),
@@ -70,7 +70,7 @@ const Question = (props) => {
               style={{ "background-color": "transparent", border: "none" }}
               type="button"
               onClick={() => {
-                const audios = new Audio(`http://localhost:5000/audios/${item.audioWord}`);
+                const audios = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${item.audioWord}`);
                 audios.play();
               }}
             >
@@ -101,7 +101,7 @@ const Question = (props) => {
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      audio = new Audio("http://localhost:5000/audios/wrong-answer.wav");
+      audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/wrong-answer.wav`);
       audio.autoplay = true;
       props.updateInCorrectTimes(props.inCorrectTimes + 1);
       setTimeout(() => {
@@ -136,12 +136,12 @@ const Question = (props) => {
 
   function onCorrectOption() {
     props.updateScore(props.score + 1);
-    audio = new Audio("http://localhost:5000/audios/right-answer.mp3");
+    audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/right-answer.mp3`);
     audio.play();
   }
   function onInCorrectOption() {
     props.updateInCorrectTimes(props.inCorrectTimes + 1);
-    audio = new Audio("http://localhost:5000/audios/wrong-answer.wav");
+    audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/wrong-answer.wav`);
     audio.play();
   }
   function onEndQuestion() {

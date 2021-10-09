@@ -24,7 +24,7 @@ const SpeedReview = () => {
   const history = useHistory();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/status/${cookies.userName}`).then((response) =>
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/status/${cookies.userName}`).then((response) =>
       setStatus(response.data)
     );
   }, [inCorrectTimes]);
@@ -55,10 +55,10 @@ const SpeedReview = () => {
       timeLearning,
       score,
     };
-    Axios.post(`http://localhost:5000/learning/${cookies.userName}`, data).then(() => {});
-    Axios.put(`http://localhost:5000/learning/${cookies.userName}`).then(() => {});
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/learning/${cookies.userName}`, data).then(() => {});
+    Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/learning/${cookies.userName}`).then(() => {});
     setTimeout(() => {
-      Axios.post(`http://localhost:5000/userStreak/${cookies.userName}`).then(() => {});
+      Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/userStreak/${cookies.userName}`).then(() => {});
     }, 2000);
   };
   const updateInCorrectTimes = (res) => {
@@ -108,7 +108,7 @@ const SpeedReview = () => {
                   type="button"
                   className="go-back-btn"
                   onClick={() => {
-                    history.push(`/dashboard/${idSource}/level/${idLevel}/${level}/word`);
+                    history.push(`/home/${idSource}/level/${idLevel}/${level}/word`);
                   }}
                 >
                   Back

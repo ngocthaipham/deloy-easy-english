@@ -49,12 +49,12 @@ function SignIn() {
       userName,
       userPassword,
     };
-    Axios.post("http://localhost:5000/login", data)
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/login`, data)
       .then((response) => {
         setCookie("token", response.data.token, { path: "/" });
         setCookie("userId", response.data.userId, { path: "/" });
         setCookie("userName", response.data.userName, { path: "/" });
-        history.push(`/dashboard`);
+        history.push(`/home`);
       })
       .catch(() => {
         setMessageError("Usernames or Password is incorrect");

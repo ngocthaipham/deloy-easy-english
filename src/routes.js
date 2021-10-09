@@ -55,8 +55,8 @@ import CourseDetail from "layouts/tables/components/CourseDetail";
 import Billing from "layouts/billing";
 import Favorite from "layouts/favorite";
 import Private from "layouts/privateCourse";
-import VirtualReality from "layouts/virtual-reality";
-import RTL from "layouts/rtl";
+// import VirtualReality from "layouts/virtual-reality";
+// import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
@@ -64,113 +64,19 @@ import SignUp from "layouts/authentication/sign-up";
 // Soft UI Dashboard React icons
 import Shop from "examples/Icons/Shop";
 import Office from "examples/Icons/Office";
-import Settings from "examples/Icons/Settings";
+// import Settings from "examples/Icons/Settings";
 import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 import CreditCard from "examples/Icons/CreditCard";
-import Cube from "examples/Icons/Cube";
+// import Cube from "examples/Icons/Cube";
 
 const routes = [
   {
     type: "collapse",
-    name: "Dashboard",
-    key: "dashboard",
-    route: "/dashboard",
-    icon: <Shop size="12px" />,
-    component: Dashboard,
-    noCollapse: true,
-  },
-  {
-    type: "route",
-    name: "AddCourse",
-    key: "AddCourse",
-    route: "/dashboard/course/new",
-    component: AddCourse,
-  },
-  {
-    type: "route",
-    name: "EditCourse",
-    key: "EditCourse",
-    route: "/dashboard/course/edit/:idSource/:nameSource/:desSource/:imageSource/0",
-    component: EditCourse,
-  },
-  {
-    type: "route",
-    name: "LevelList",
-    key: "LevelList",
-    route: "/dashboard/:idSource/level",
-    component: ListLevel,
-  },
-  {
-    type: "route",
-    name: "AddLevel",
-    key: "AddLevel",
-    route: "/dashboard/:idSource/level/new",
-    component: AddLevel,
-  },
-  {
-    type: "route",
-    name: "EditLevel",
-    key: "EditLevel",
-    route: "/dashboard/:idSource/level/edit/:idLevel/:level/:imageLevel",
-    component: EditLevel,
-  },
-  {
-    type: "route",
-    name: "LearnedWord",
-    key: "LearnedWord",
-    route: "/dashboard/:idSource/level/learned/:idLevel/:level",
-    component: LearnedWord,
-  },
-  {
-    type: "route",
-    name: "UnLearnedWord",
-    key: "UnLearnedWord",
-    route: "/dashboard/:idSource/level/unlearned/:idLevel/:level",
-    component: UnLearnedWord,
-  },
-  {
-    type: "route",
-    name: "Learn",
-    key: "Learn",
-    route: "/dashboard/:idSource/level/:idLevel/:level/learn",
-    component: Learn,
-  },
-  {
-    type: "route",
-    name: "WordList",
-    key: "WordList",
-    route: "/dashboard/:idSource/level/:idLevel/:level/word",
-    component: ListWord,
-  },
-  {
-    type: "route",
-    name: "AddWord",
-    key: "AddWord",
-    route: "/dashboard/:idSource/level/:idLevel/:level/word/new",
-    component: AddWord,
-  },
-  {
-    type: "route",
-    name: "EditWord",
-    key: "EditWord",
-    route:
-    "/dashboard/:idSource/level/:idLevel/:level/word/edit/:id/:vocab/:meaning/:imageWord/:audioWord",
-    component: EditWord,
-  },
-  {
-    type: "route",
-    name: "SpeedTest",
-    key: "SpeedTest",
-    route: "/dashboard/:idSource/level/:idLevel/:level/word/speedtest",
-    component: SpeedTest,
-  },
-  {
-    type: "collapse",
-    name: "Tables",
-    key: "tables",
-    route: "/tables",
+    name: "Explore",
+    key: "explore",
+    route: "/explore",
     icon: <Office size="12px" />,
     component: Tables,
     noCollapse: true,
@@ -179,15 +85,109 @@ const routes = [
     type: "route",
     name: "Course",
     key: "Course",
-    route: "/tables/:idSource",
+    route: "/explore/:idSource",
     component: Course,
   },
   {
     type: "route",
     name: "CourseDetail",
     key: "CourseDetail",
-    route: "/tables/:idSource/:idLevel",
+    route: "/explore/:idSource/:idLevel",
     component: CourseDetail,
+  },
+  {
+    type: "collapse",
+    name: "My course",
+    key: "myCourse",
+    route: "/home",
+    icon: <Shop size="12px" />,
+    component: Dashboard,
+    noCollapse: true,
+  },
+  {
+    type: "route",
+    name: "AddCourse",
+    key: "AddCourse",
+    route: "/home/course/new",
+    component: AddCourse,
+  },
+  {
+    type: "route",
+    name: "EditCourse",
+    key: "EditCourse",
+    route: "/home/course/edit/:idSource/:nameSource/:desSource/:imageSource/0",
+    component: EditCourse,
+  },
+  {
+    type: "route",
+    name: "LevelList",
+    key: "LevelList",
+    route: "/home/:idSource/level",
+    component: ListLevel,
+  },
+  {
+    type: "route",
+    name: "AddLevel",
+    key: "AddLevel",
+    route: "/home/:idSource/level/new",
+    component: AddLevel,
+  },
+  {
+    type: "route",
+    name: "EditLevel",
+    key: "EditLevel",
+    route: "/home/:idSource/level/edit/:idLevel/:level/:imageLevel",
+    component: EditLevel,
+  },
+  {
+    type: "route",
+    name: "LearnedWord",
+    key: "LearnedWord",
+    route: "/home/:idSource/level/learned/:idLevel/:level",
+    component: LearnedWord,
+  },
+  {
+    type: "route",
+    name: "UnLearnedWord",
+    key: "UnLearnedWord",
+    route: "/home/:idSource/level/unlearned/:idLevel/:level",
+    component: UnLearnedWord,
+  },
+  {
+    type: "route",
+    name: "Learn",
+    key: "Learn",
+    route: "/home/:idSource/level/:idLevel/:level/learn",
+    component: Learn,
+  },
+  {
+    type: "route",
+    name: "WordList",
+    key: "WordList",
+    route: "/home/:idSource/level/:idLevel/:level/word",
+    component: ListWord,
+  },
+  {
+    type: "route",
+    name: "AddWord",
+    key: "AddWord",
+    route: "/home/:idSource/level/:idLevel/:level/word/new",
+    component: AddWord,
+  },
+  {
+    type: "route",
+    name: "EditWord",
+    key: "EditWord",
+    route:
+    "/home/:idSource/level/:idLevel/:level/word/edit/:id/:vocab/:meaning/:imageWord/:audioWord",
+    component: EditWord,
+  },
+  {
+    type: "route",
+    name: "SpeedTest",
+    key: "SpeedTest",
+    route: "/home/:idSource/level/:idLevel/:level/word/speedtest",
+    component: SpeedTest,
   },
   {
     type: "collapse",
@@ -207,34 +207,34 @@ const routes = [
     component: Private,
     noCollapse: true,
   },
-  {
-    type: "collapse",
-    name: "Billing",
-    key: "billing",
-    route: "/billing",
-    icon: <CreditCard size="12px" />,
-    component: Billing,
-    noCollapse: true,
-  },
-  {
-    type: "collapse",
-    name: "Virtual Reality",
-    key: "virtual-reality",
-    route: "/virtual-reality",
-    icon: <Cube size="12px" />,
-    component: VirtualReality,
-    noCollapse: true,
-  },
-  {
-    type: "collapse",
-    name: "RTL",
-    key: "rtl",
-    route: "/rtl",
-    icon: <Settings size="12px" />,
-    component: RTL,
-    noCollapse: true,
-  },
-  { type: "title", title: "Account Pages", key: "account-pages" },
+  // {
+  //   type: "collapse",
+  //   name: "Billing",
+  //   key: "billing",
+  //   route: "/billing",
+  //   icon: <CreditCard size="12px" />,
+  //   component: Billing,
+  //   noCollapse: true,
+  // },
+  // {
+  //   type: "collapse",
+  //   name: "Virtual Reality",
+  //   key: "virtual-reality",
+  //   route: "/virtual-reality",
+  //   icon: <Cube size="12px" />,
+  //   component: VirtualReality,
+  //   noCollapse: true,
+  // },
+  // {
+  //   type: "collapse",
+  //   name: "RTL",
+  //   key: "rtl",
+  //   route: "/rtl",
+  //   icon: <Settings size="12px" />,
+  //   component: RTL,
+  //   noCollapse: true,
+  // },
+  { type: "title", title: "Account", key: "account" },
   {
     type: "collapse",
     name: "Profile",
@@ -244,6 +244,171 @@ const routes = [
     component: Profile,
     noCollapse: true,
   },
+];
+const unSignInRoute = [
+  {
+    type: "collapse",
+    name: "Explore",
+    key: "explore",
+    route: "/explore",
+    icon: <Office size="12px" />,
+    component: Tables,
+    noCollapse: true,
+  },
+  {
+    type: "route",
+    name: "Course",
+    key: "Course",
+    route: "/explore/:idSource",
+    component: Course,
+  },
+  {
+    type: "route",
+    name: "CourseDetail",
+    key: "CourseDetail",
+    route: "/explore/:idSource/:idLevel",
+    component: CourseDetail,
+  },
+  {
+    type: "collapse",
+    name: "My Course",
+    key: "myCourse",
+    route: "/home",
+    icon: <Shop size="12px" />,
+    component: Dashboard,
+    noCollapse: true,
+  },
+  {
+    type: "route",
+    name: "AddCourse",
+    key: "AddCourse",
+    route: "/home/course/new",
+    component: AddCourse,
+  },
+  {
+    type: "route",
+    name: "EditCourse",
+    key: "EditCourse",
+    route: "/home/course/edit/:idSource/:nameSource/:desSource/:imageSource/0",
+    component: EditCourse,
+  },
+  {
+    type: "route",
+    name: "LevelList",
+    key: "LevelList",
+    route: "/home/:idSource/level",
+    component: ListLevel,
+  },
+  {
+    type: "route",
+    name: "AddLevel",
+    key: "AddLevel",
+    route: "/home/:idSource/level/new",
+    component: AddLevel,
+  },
+  {
+    type: "route",
+    name: "EditLevel",
+    key: "EditLevel",
+    route: "/home/:idSource/level/edit/:idLevel/:level/:imageLevel",
+    component: EditLevel,
+  },
+  {
+    type: "route",
+    name: "LearnedWord",
+    key: "LearnedWord",
+    route: "/home/:idSource/level/learned/:idLevel/:level",
+    component: LearnedWord,
+  },
+  {
+    type: "route",
+    name: "UnLearnedWord",
+    key: "UnLearnedWord",
+    route: "/home/:idSource/level/unlearned/:idLevel/:level",
+    component: UnLearnedWord,
+  },
+  {
+    type: "route",
+    name: "Learn",
+    key: "Learn",
+    route: "/home/:idSource/level/:idLevel/:level/learn",
+    component: Learn,
+  },
+  {
+    type: "route",
+    name: "WordList",
+    key: "WordList",
+    route: "/home/:idSource/level/:idLevel/:level/word",
+    component: ListWord,
+  },
+  {
+    type: "route",
+    name: "AddWord",
+    key: "AddWord",
+    route: "/home/:idSource/level/:idLevel/:level/word/new",
+    component: AddWord,
+  },
+  {
+    type: "route",
+    name: "EditWord",
+    key: "EditWord",
+    route:
+    "/home/:idSource/level/:idLevel/:level/word/edit/:id/:vocab/:meaning/:imageWord/:audioWord",
+    component: EditWord,
+  },
+  {
+    type: "route",
+    name: "SpeedTest",
+    key: "SpeedTest",
+    route: "/home/:idSource/level/:idLevel/:level/word/speedtest",
+    component: SpeedTest,
+  },
+  {
+    type: "collapse",
+    name: "Favorite Course",
+    key: "Favorite",
+    route: "/favorite",
+    icon: <Office size="12px" />,
+    component: Favorite,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Private Course",
+    key: "Private",
+    route: "/private",
+    icon: <Office size="12px" />,
+    component: Private,
+    noCollapse: true,
+  },
+  // {
+  //   type: "collapse",
+  //   name: "Billing",
+  //   key: "billing",
+  //   route: "/billing",
+  //   icon: <CreditCard size="12px" />,
+  //   component: Billing,
+  //   noCollapse: true,
+  // },
+  // {
+  //   type: "collapse",
+  //   name: "Virtual Reality",
+  //   key: "virtual-reality",
+  //   route: "/virtual-reality",
+  //   icon: <Cube size="12px" />,
+  //   component: VirtualReality,
+  //   noCollapse: true,
+  // },
+  // {
+  //   type: "collapse",
+  //   name: "RTL",
+  //   key: "rtl",
+  //   route: "/rtl",
+  //   icon: <Settings size="12px" />,
+  //   component: RTL,
+  //   noCollapse: true,
+  // },
+  { type: "title", title: "Account", key: "account" },
   {
     type: "collapse",
     name: "Sign In",
@@ -264,4 +429,5 @@ const routes = [
   },
 ];
 
-export default routes;
+
+export default { routes , unSignInRoute };

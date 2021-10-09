@@ -31,7 +31,7 @@ const Course = () => {
               <div className="level-flex">
                 {courseItem.map((item) => (
                   <div className="level-item" key={item.idLevel}>
-                    <Link to={`/tables/${idSource}/${item.idLevel}`}>
+                    <Link to={`/explore/${idSource}/${item.idLevel}`}>
                       <DefaultProjectCard
                         image={`http://localhost:5000/images/${item.imageLevel}`}
                         title={`${item.level}`}

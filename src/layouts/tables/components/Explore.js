@@ -7,6 +7,7 @@ import SuiButton from "components/SuiButton";
 import Card from "@mui/material/Card";
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
+import Star from "assets/images/flaticon/star.png";
 import "./Explore.css";
 
 const Explore = () => {
@@ -19,17 +20,21 @@ const Explore = () => {
   const [cookies] = useCookies();
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/favorites/${cookies.userName}`).then((response) => {
-      setFavoriteCourseList(response.data.result);
-    });
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/favorites/${cookies.userName}`).then(
+      (response) => {
+        setFavoriteCourseList(response.data.result);
+      }
+    );
   }, [isClicked]);
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${0}/page${currentPage}`).then((response) => {
-      setCourseList(response.data.result);
-      setTotalCourse(response.data.totalCourse);
-      setCoursePerPage(response.data.coursePerPage);
-      console.log(response.data);
-    });
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${0}/page${currentPage}`).then(
+      (response) => {
+        setCourseList(response.data.result);
+        setTotalCourse(response.data.totalCourse);
+        setCoursePerPage(response.data.coursePerPage);
+        console.log(response.data);
+      }
+    );
   }, [isClicked]);
 
   console.log(process.env.REACT_APP_API_ENDPOINT);
@@ -60,14 +65,12 @@ const Explore = () => {
     <>
       <Card>
         <SuiBox p={2}>
-          <div className="explore-container">
-            {courseList.map((course) =>
-              favoriteCourseList.find(
-                (favoriteCourse) => favoriteCourse.idSource === course.idSource
-              ) ? (
+          {!cookies.userId && (
+            <div className="explore-container">
+              {courseList.map((course) => (
                 <div key={course.idSource} className="explore-item">
                   <div className="course-list-wrapper">
-                    <Link to={`/tables/${course.idSource}`}>
+                    <Link to={`/explore/${course.idSource}`}>
                       <DefaultProjectCard
                         image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageSource}`}
                         title={`${course.nameSource}`}
@@ -75,16 +78,6 @@ const Explore = () => {
                       />
                     </Link>
                     <div>
-                      <SuiButton
-                        variant="outlined"
-                        size="small"
-                        buttonColor="info"
-                        onClick={() => {
-                          removeFromFavorite(course.idSource);
-                        }}
-                      >
-                        Remove from favorites
-                      </SuiButton>
                       <div className="explore-des-flex">
                         <div className="explore-des-item">
                           <SuiTypography variant="body2" textColor="dark">
@@ -96,55 +89,103 @@ const Explore = () => {
                         </div>
                         <div className="explore-des-item">
                           <SuiTypography variant="body2" textColor="warning">
-                            {course.star}
+                            {course.star} <img style={{height: "15px"}} src={Star} alt="star" />
                           </SuiTypography>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              ) : (
-                <div className="explore-item">
-                  <div className="course-list-wrapper">
-                    <Link to={`/tables/${course.idSource}`}>
-                      <DefaultProjectCard
-                        image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageSource}`}
-                        title={`${course.nameSource}`}
-                        description={`By ${course.userName}`}
-                      />
-                    </Link>
-                    <div>
-                      <SuiButton
-                        variant="outlined"
-                        size="small"
-                        buttonColor="info"
-                        onClick={() => {
-                          addToFavorite(course.idSource);
-                        }}
-                      >
-                        Add to favorites
-                      </SuiButton>
-                      <div className="explore-des-flex">
-                        <div className="explore-des-item">
-                          <SuiTypography variant="body2" textColor="dark">
-                            {course.likes} Like
-                          </SuiTypography>
-                          <SuiTypography variant="body2" textColor="dark">
-                            {course.countRating} Rate
-                          </SuiTypography>
-                        </div>
-                        <div className="explore-des-item explore-des-2">
-                          <SuiTypography variant="body2" textColor="warning">
-                            {course.star}
-                          </SuiTypography>
+              ))}
+            </div>
+          )}
+          {cookies.userId && (
+            <div className="explore-container">
+              {courseList.map((course) =>
+                favoriteCourseList.find(
+                  (favoriteCourse) => favoriteCourse.idSource === course.idSource
+                ) ? (
+                  <div key={course.idSource} className="explore-item">
+                    <div className="course-list-wrapper">
+                      <Link to={`/explore/${course.idSource}`}>
+                        <DefaultProjectCard
+                          image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageSource}`}
+                          title={`${course.nameSource}`}
+                          description={`By ${course.userName}`}
+                        />
+                      </Link>
+                      <div>
+                        <SuiButton
+                          variant="outlined"
+                          size="small"
+                          buttonColor="info"
+                          onClick={() => {
+                            removeFromFavorite(course.idSource);
+                          }}
+                        >
+                          Remove from favorites
+                        </SuiButton>
+                        <div className="explore-des-flex">
+                          <div className="explore-des-item">
+                            <SuiTypography variant="body2" textColor="dark">
+                              {course.likes} Like
+                            </SuiTypography>
+                            <SuiTypography variant="body2" textColor="dark">
+                              {course.countRating} Rate
+                            </SuiTypography>
+                          </div>
+                          <div className="explore-des-item">
+                            <SuiTypography variant="body2" textColor="warning">
+                              {course.star} <img style={{height: "15px"}} src={Star} alt="star" />
+                            </SuiTypography>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )
-            )}
-          </div>
+                ) : (
+                  <div className="explore-item">
+                    <div className="course-list-wrapper">
+                      <Link to={`/explore/${course.idSource}`}>
+                        <DefaultProjectCard
+                          image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageSource}`}
+                          title={`${course.nameSource}`}
+                          description={`By ${course.userName}`}
+                        />
+                      </Link>
+                      <div>
+                        <SuiButton
+                          variant="outlined"
+                          size="small"
+                          buttonColor="info"
+                          onClick={() => {
+                            addToFavorite(course.idSource);
+                          }}
+                        >
+                          Add to favorites
+                        </SuiButton>
+                        <div className="explore-des-flex">
+                          <div className="explore-des-item">
+                            <SuiTypography variant="body2" textColor="dark">
+                              {course.likes} Like
+                            </SuiTypography>
+                            <SuiTypography variant="body2" textColor="dark">
+                              {course.countRating} Rate
+                            </SuiTypography>
+                          </div>
+                          <div className="explore-des-item explore-des-2">
+                            <SuiTypography variant="body2" textColor="warning">
+                              {course.star} <img style={{height: "15px"}} src={Star} alt="star" />
+                            </SuiTypography>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+          )}
           {coursePerPage < totalCourse && (
             <div className="loadmore-btn">
               <SuiButton

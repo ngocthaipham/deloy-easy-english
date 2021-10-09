@@ -31,7 +31,7 @@ const PrivateCourse = () => {
       <div style={{ "padding-bottom": "10px" }}>
         <SuiButton
           component={Link}
-          to="/dashboard/course/new"
+          to="/home/course/new"
           variant="outlined"
           size="small"
           buttonColor="info"
@@ -53,7 +53,7 @@ const PrivateCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/dashboard/${course.idSource}/level`}
+                      to={`/home/${course.idSource}/level`}
                       variant="outlined"
                       size="small"
                       buttonColor="info"
@@ -64,7 +64,7 @@ const PrivateCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/dashboard/course/edit/${course.idSource}/${course.nameSource}/${course.desSource}/${course.imageSource}/0`}
+                      to={`/home/course/edit/${course.idSource}/${course.nameSource}/${course.desSource}/${course.imageSource}/0`}
                       variant="outlined"
                       size="small"
                       buttonColor="info"
@@ -75,7 +75,7 @@ const PrivateCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/dashboard/${course.idSource}/level`}
+                      to={`/home/${course.idSource}/level`}
                       variant="outlined"
                       size="small"
                       buttonColor="error"

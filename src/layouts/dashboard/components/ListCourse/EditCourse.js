@@ -30,7 +30,7 @@ const EditCourse = () => {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      history.push(`/dashboard`);
+      history.push(`/home`);
     });
   };
   return (
