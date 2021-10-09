@@ -19,11 +19,11 @@ const ListCourse = () => {
   // const classes = styles();
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${cookies.userName}/0/page1`, {
-      withCredentials: true,
-    }).then((response) => {
-      setCourseList(response.data.result);
-    });
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${cookies.userName}/0/page1`).then(
+      (response) => {
+        setCourseList(response.data.result);
+      }
+    );
   }, []);
 
   return (
