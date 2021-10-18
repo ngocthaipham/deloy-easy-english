@@ -45,7 +45,7 @@ function BasicLayout({ title, description, image, children }) {
         routes={routes}
         action={{
           type: "external",
-          route: "https://www.creative-tim.com/product/soft-ui-dashboard-material-ui",
+          route: "https://ngocthaipham.github.io/personal-site/",
           label: "free download",
         }}
         transparent

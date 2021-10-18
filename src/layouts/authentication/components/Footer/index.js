@@ -84,7 +84,7 @@ function Footer() {
         </Grid>
         <Grid item xs={12} lg={8} className="text-center">
           <SuiTypography variant="body2" textColor="secondary">
-            Copyright &copy; 2021 Soft by Creative Tim.
+            Copyright &copy; by Pham Ngoc Thai.
           </SuiTypography>
         </Grid>
       </Grid>
