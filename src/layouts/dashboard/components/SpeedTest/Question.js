@@ -195,6 +195,7 @@ const Question = (props) => {
             <div className="answer">
               <SuiBox>
                 <Card sx={{ height: "80px", justifyContent: "center", margin: "0px 5px" }}>
+                  {/* <div  style={{height: "80px"}}> */}
                   <SuiButton
                     variant="text"
                     size="large"
@@ -209,8 +210,11 @@ const Question = (props) => {
                       clearInterval(intervalRef.current);
                     }}
                   >
+                    {/* <div style={{height: "80px", textAlign: "center"}}> */}
                     {option}
+                    {/* </div> */}
                   </SuiButton>
+                  {/* </div> */}
                 </Card>
               </SuiBox>
             </div>
