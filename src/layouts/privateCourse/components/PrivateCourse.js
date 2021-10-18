@@ -19,7 +19,7 @@ const PrivateCourse = () => {
   // const classes = styles();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/sources/${cookies.userName}/1/page1`, {
+    Axios.get(`https://server-easyenglish.herokuapp.com//sources/${cookies.userName}/1/page1`, {
       withCredentials: true,
     }).then((response) => {
       setCourseList(response.data.result);
@@ -45,7 +45,7 @@ const PrivateCourse = () => {
             <div className="card-item" key={course.idSource}>
               <SuiBox p={2}>
                 <DefaultProjectCard
-                  image={`http://localhost:5000/images/${course.imageSource}`}
+                  image={`https://server-easyenglish.herokuapp.com//images/${course.imageSource}`}
                   title={`${course.nameSource}`}
                   description={`${course.desSource}`}
                 />
@@ -137,7 +137,7 @@ const PrivateCourse = () => {
                       <div>
                         <SuiBox
                           component="img"
-                          src={`http://localhost:5000/images/${course.imageSource}`}
+                          src={`https://server-easyenglish.herokuapp.com//images/${course.imageSource}`}
                           alt="source-image"
                           width="300px"
                           height="200px"

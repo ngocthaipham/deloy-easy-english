@@ -18,7 +18,7 @@ const AddWord = () => {
   const [fileSelected, setFileSelected] = useState();
   const [audioSelected, setAudioSelected] = useState();
   const [previewImage, setPreviewImage] = useState(
-    "http://localhost:5000/images/image1627300361179.jpg"
+    "https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg"
   );
   const [previewAudio, setPreviewAudio] = useState();
   const [cookies] = useCookies();
@@ -35,12 +35,12 @@ const AddWord = () => {
     data.append("imageWord", fileSelected);
     data.append("audioWord", audioSelected);
     data.append("userName", cookies.userName);
-    Axios.post(`http://localhost:5000/word`, data, {
+    Axios.post(`https://server-easyenglish.herokuapp.com//word`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      setPreviewImage("http://localhost:5000/images/image1627300361179.jpg");
+      setPreviewImage("https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg");
       setPreviewAudio();
       history.push(`/home/${idSource}/level/${idLevel}/${level}/word`);
     });

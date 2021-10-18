@@ -14,7 +14,7 @@ const Course = () => {
 
   const { idSource } = useParams();
   useEffect(() => {
-    Axios.get(`http://localhost:5000/level/${idSource}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//level/${idSource}`).then((response) => {
       setCourseItem(response.data);
       console.log(response.data);
     });
@@ -33,7 +33,7 @@ const Course = () => {
                   <div className="level-item" key={item.idLevel}>
                     <Link to={`/explore/${idSource}/${item.idLevel}`}>
                       <DefaultProjectCard
-                        image={`http://localhost:5000/images/${item.imageLevel}`}
+                        image={`https://server-easyenglish.herokuapp.com//images/${item.imageLevel}`}
                         title={`${item.level}`}
                       />
                     </Link>

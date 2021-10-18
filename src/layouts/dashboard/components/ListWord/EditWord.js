@@ -34,7 +34,7 @@ const EditWord = () => {
     data.append("imageWord", newFileSelected);
     data.append("audioWord", newAudioSelected);
     data.append("userName", cookies.userName);
-    Axios.put(`http://localhost:5000/word/${id}`, data, {
+    Axios.put(`https://server-easyenglish.herokuapp.com//word/${id}`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -90,7 +90,7 @@ const EditWord = () => {
                     ) : (
                       <img
                         className="preview-image"
-                        src={`http://localhost:5000/images/${imageWord}`}
+                        src={`https://server-easyenglish.herokuapp.com//images/${imageWord}`}
                         alt="preview"
                       />
                     )}
@@ -127,7 +127,7 @@ const EditWord = () => {
                         style={{ "background-color": "transparent", border: "none" }}
                         type="button"
                         onClick={() => {
-                          const audio = new Audio(`http://localhost:5000/audios/${audioWord}`);
+                          const audio = new Audio(`https://server-easyenglish.herokuapp.com//audios/${audioWord}`);
                           audio.play();
                         }}
                       >

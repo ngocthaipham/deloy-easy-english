@@ -68,7 +68,7 @@ function SignIn() {
   return (
     <CoverLayout
       title="Welcome back"
-      description="Enter your email and password to sign in"
+      description="Enter your username and password to sign in"
       image={curved9}
     >
       <SuiBox

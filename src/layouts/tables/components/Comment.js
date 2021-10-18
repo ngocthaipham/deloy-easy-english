@@ -15,13 +15,13 @@ const Comment = (props) => {
   const [cookies] = useCookies();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/getComment/${idSource}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//getComment/${idSource}`).then((response) => {
       setCommentList(response.data);
     });
   }, [submittedComment]);
 
   const sendComment = () => {
-    Axios.post(`http://localhost:5000/comment/${idSource}`, {
+    Axios.post(`https://server-easyenglish.herokuapp.com//comment/${idSource}`, {
       comment,
       byUser: cookies.userName,
     }).then((response) => {

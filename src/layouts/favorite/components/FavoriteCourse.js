@@ -12,13 +12,13 @@ const FavoriteCourse = () => {
   const [cookies] = useCookies();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/favorites/${cookies.userName}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//favorites/${cookies.userName}`).then((response) => {
       setFavoriteCourse(response.data.result);
     });
   }, []);
 
   function removeFromFavorite(id) {
-    Axios.put(`http://localhost:5000/favorite/${cookies.userName}`, {
+    Axios.put(`https://server-easyenglish.herokuapp.com//favorite/${cookies.userName}`, {
       idSource: id,
     }).then((response) => {
       alert(response.data);
@@ -33,7 +33,7 @@ const FavoriteCourse = () => {
             <div className="card-item" key={course.idSource}>
               <SuiBox p={2}>
                 <DefaultProjectCard
-                  image={`http://localhost:5000/images/${course.imageFavoriteCourse}`}
+                  image={`https://server-easyenglish.herokuapp.com//images/${course.imageFavoriteCourse}`}
                   title={`${course.nameFavoriteCourse}`}
                   description={`${course.desFavoriteCourse}`}
                 />

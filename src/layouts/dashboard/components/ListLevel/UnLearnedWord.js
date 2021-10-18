@@ -18,7 +18,7 @@ const UnLearnedWord = () => {
   ];
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/vocabsLearn/${idLevel}/0`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//vocabsLearn/${idLevel}/0`).then((response) => {
       setWordList(
         response.data.result.map((word) => ({
           Word: word.vocab,
@@ -27,7 +27,7 @@ const UnLearnedWord = () => {
             <img
               className="word-image"
               style={{ height: "150px", width: "200px" }}
-              src={`http://localhost:5000/images/${word.imageWord}`}
+              src={`https://server-easyenglish.herokuapp.com//images/${word.imageWord}`}
               alt="a"
             />
           ),
@@ -36,7 +36,7 @@ const UnLearnedWord = () => {
               style={{ "background-color": "transparent", border: "none" }}
               type="button"
               onClick={() => {
-                const audio = new Audio(`http://localhost:5000/audios/${word.audioWord}`);
+                const audio = new Audio(`https://server-easyenglish.herokuapp.com//audios/${word.audioWord}`);
                 audio.play();
               }}
             >

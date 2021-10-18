@@ -30,6 +30,7 @@ import Icon from "@mui/material/Icon";
 
 // Soft UI Dashboard React components
 import SuiBox from "components/SuiBox";
+import SuiButton from "components/SuiButton";
 import SuiTypography from "components/SuiTypography";
 // import SuiInput from "components/SuiInput";
 
@@ -39,11 +40,12 @@ import NotificationItem from "examples/NotificationItem";
 
 // Custom styles for DashboardNavbar
 import styles from "examples/Navbars/DashboardNavbar/styles";
+import Axios from "axios";
+import { useHistory } from "react-router-dom";
 
 // Soft UI Dashboard React context
 import { useSoftUIController } from "context";
 import { useCookies } from "react-cookie";
-
 
 // Images
 import team2 from "assets/images/team-2.jpg";
@@ -56,8 +58,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const [openMenu, setOpenMenu] = useState(false);
   const classes = styles({ transparentNavbar, absolute, light, isMini });
   const route = useLocation().pathname.split("/").slice(1);
-  const [cookies] = useCookies();
-
+  // const [cookies] = useCookies();
+  const [cookies, useCookie, removeCookie] = useCookies();
+  const history = useHistory();
 
   useEffect(() => {
     // Setting the navbar type
@@ -94,6 +97,16 @@ function DashboardNavbar({ absolute, light, isMini }) {
   // const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);
 
+  const logout = () => {
+    Axios.get("https://server-easyenglish.herokuapp.com//logout").then((response) => {
+      alert(response.data);
+      removeCookie("token");
+      removeCookie("userId");
+      removeCookie("userName");
+      history.push("/");
+      // setSelected(!selected);
+    });
+  };
   // Render the notifications menu
   const renderMenu = () => (
     <Menu
@@ -149,32 +162,43 @@ function DashboardNavbar({ absolute, light, isMini }) {
               color={light ? "white" : "inherit"}
               customClass={classes.navbar_section_desktop}
             >
-              {cookies.userId ? 
-              <Link to="/profile">
-                <IconButton className={classes.navbar_icon_button}>
-                  <Icon className={light ? "text-white" : "text-dark"}>account_circle</Icon>
-                  <SuiTypography
-                    variant="button"
-                    fontWeight="medium"
-                    textColor={light ? "white" : "dark"}
+              {cookies.userId ? (
+                <div>
+                  <Link to="/profile">
+                    <IconButton className={classes.navbar_icon_button}>
+                      <Icon className={light ? "text-white" : "text-dark"}>account_circle</Icon>
+                      <SuiTypography
+                        variant="button"
+                        fontWeight="medium"
+                        textColor={light ? "white" : "dark"}
+                      >
+                        {cookies.userName}
+                      </SuiTypography>
+                    </IconButton>
+                  </Link>
+                  <SuiButton
+                    size="small"
+                    onClick={() => {
+                      logout();
+                    }}
                   >
-                    {cookies.userName}
-                  </SuiTypography>
-                </IconButton>
-              </Link>
-              :  <Link to="/authentication/sign-in/basic">
-              <IconButton className={classes.navbar_icon_button}>
-                <Icon className={light ? "text-white" : "text-dark"}>account_circle</Icon>
-                <SuiTypography
-                  variant="button"
-                  fontWeight="medium"
-                  textColor={light ? "white" : "dark"}
-                >
-                  Sign in
-                </SuiTypography>
-              </IconButton>
-            </Link>
-}
+                    Logout
+                  </SuiButton>
+                </div>
+              ) : (
+                <Link to="/authentication/sign-in">
+                  <IconButton className={classes.navbar_icon_button}>
+                    <Icon className={light ? "text-white" : "text-dark"}>account_circle</Icon>
+                    <SuiTypography
+                      variant="button"
+                      fontWeight="medium"
+                      textColor={light ? "white" : "dark"}
+                    >
+                      Sign in
+                    </SuiTypography>
+                  </IconButton>
+                </Link>
+              )}
               <IconButton
                 size="small"
                 color="inherit"

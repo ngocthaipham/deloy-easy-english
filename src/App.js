@@ -45,7 +45,10 @@ import themeRTL from "assets/theme/theme-rtl";
 
 // Soft UI Dashboard PRO React routes
 import route from "routes";
+import SignIn from "layouts/authentication/sign-in";
 import { useCookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
+
 
 // Soft UI Dashboard PRO React contexts
 import { useSoftUIController } from "context";
@@ -60,6 +63,8 @@ export default function App() {
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
   const [cookies] = useCookies();
+  const history = useHistory();
+
 
   // JSS presets for the rtl
   const jss = create({
@@ -98,7 +103,11 @@ export default function App() {
       if (route.collapse) {
         return getRoutes(route.collapse);
       }
+      // if (route.collapse && !cookies.userId && route.name!=="Explore" && route.name!=="Sign Up") {
+      //   // getRoutes(route.collapse);
+      //   history.push(`/authentication/sign-in`);
 
+      // }
       if (route.route) {
         return <Route exact path={route.route} component={route.component} key={route.key} />;
       }

@@ -21,13 +21,13 @@ const HardQuestion = (props) => {
   let audio = new Audio();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/vocabs/${idLevel}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//vocabs/${idLevel}`).then((response) => {
       setWordList(response.data);
     });
   }, []);
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/learningPoint/${idLevel}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//learningPoint/${idLevel}`).then((response) => {
       props.updateLearningPoint(response.data);
     });
   }, [props.clicked]);
@@ -49,7 +49,7 @@ const HardQuestion = (props) => {
               <img
                 className="test-image"
                 style={{ height: "500px", width: "750px" }}
-                src={`http://localhost:5000/images/${item.imageWord}`}
+                src={`https://server-easyenglish.herokuapp.com//images/${item.imageWord}`}
                 alt="learn"
               />
             ),
@@ -65,7 +65,7 @@ const HardQuestion = (props) => {
                   style={{ "background-color": "transparent", border: "none" }}
                   type="button"
                   onClick={() => {
-                    const audios = new Audio(`http://localhost:5000/audios/${item.audioWord}`);
+                    const audios = new Audio(`https://server-easyenglish.herokuapp.com//audios/${item.audioWord}`);
                     audios.play();
                   }}
                 >
@@ -95,16 +95,16 @@ const HardQuestion = (props) => {
       props.updateClicked(true);
     }, 2000);
     if (answer === answerSubmit) {
-      Axios.put(`http://localhost:5000/updateLearningPoint/${id}`, {
+      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
         learningPoint: correct,
       });
-      audio = new Audio("http://localhost:5000/audios/right-answer.mp3");
+      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/right-answer.mp3");
       audio.play();
     } else {
-      Axios.put(`http://localhost:5000/updateLearningPoint/${id}`, {
+      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
         learningPoint: inCorrect,
       });
-      audio = new Audio("http://localhost:5000/audios/wrong-answer.wav");
+      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/wrong-answer.wav");
       audio.play();
       setTimeout(() => {
         setCurrentQuestion(0);

@@ -175,7 +175,7 @@ function Sidenav({ routes, ...rest }) {
         <SuiBox mt={2}>
           <SuiButton
             component="a"
-            href="https://creative-tim.com/product/soft-ui-dashboard-pro-react"
+            href="https://ngocthaipham.github.io/personal-site/"
             target="_blank"
             rel="noreferrer"
             variant="gradient"

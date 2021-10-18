@@ -56,13 +56,13 @@ function Overview() {
   ];
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/user/${cookies.userName}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//user/${cookies.userName}`).then((response) => {
       setUser(response.data.result);
       console.log(user);
     });
   }, []);
   useEffect(() => {
-    Axios.get(`http://localhost:5000/time/${cookies.userName}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//time/${cookies.userName}`).then((response) => {
       setLearningList(
         response.data.result.map((item) => ({
           Date: item.date,

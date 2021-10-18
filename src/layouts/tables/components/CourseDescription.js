@@ -21,7 +21,7 @@ const CourseDescription = () => {
   const [cookies] = useCookies();
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/source/${idSource}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//source/${idSource}`).then((response) => {
       setNameSource(response.data.nameSource);
       setDesSource(response.data.desSource);
       setImageSource(response.data.imageSource);
@@ -42,15 +42,15 @@ const CourseDescription = () => {
       userName: cookies.userName,
     };
 
-    Axios.post(`http://localhost:5000/explore/addCourse`, data).then(() => {});
+    Axios.post(`https://server-easyenglish.herokuapp.com//explore/addCourse`, data).then(() => {});
   };
   const addLevelFromExplore = () => {
-    Axios.post(`http://localhost:5000/explore/addLevel/${idSource}`, {
+    Axios.post(`https://server-easyenglish.herokuapp.com//explore/addLevel/${idSource}`, {
       userName: cookies.userName,
     }).then(() => {});
   };
   const addWordFromExplore = () => {
-    Axios.post(`http://localhost:5000/explore/addWord/${idSource}`, {
+    Axios.post(`https://server-easyenglish.herokuapp.com//explore/addWord/${idSource}`, {
       userName: cookies.userName,
     }).then((response) => {
       alert(response.data);
@@ -62,7 +62,7 @@ const CourseDescription = () => {
       {cookies.userId ? (
         <div className="course-item-des-container">
           <DefaultProjectCard
-            image={`http://localhost:5000/images/${imageSource}`}
+            image={`https://server-easyenglish.herokuapp.com//images/${imageSource}`}
             title={`${nameSource}`}
             description={`${desSource}`}
           />
@@ -93,7 +93,7 @@ const CourseDescription = () => {
       ) : (
         <div className="course-item-des-container">
           <DefaultProjectCard
-            image={`http://localhost:5000/images/${imageSource}`}
+            image={`https://server-easyenglish.herokuapp.com//images/${imageSource}`}
             title={`${nameSource}`}
             description={`${desSource}`}
           />

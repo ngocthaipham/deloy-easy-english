@@ -72,9 +72,11 @@ const ListLevel = () => {
                 </Link>
               </div>
               <div className="action-level-item">
+              <Link to={`/home/${idSource}/level/${level.idLevel}/${level.level}/review`}>
                 <SuiButton variant="outlined" size="small" buttonColor="info">
                   Classic Review
                 </SuiButton>
+                </Link>
               </div>
               <div className="action-level-item">
                 <SuiButton variant="outlined" size="small" buttonColor="error">

@@ -53,7 +53,7 @@ function Header() {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    Axios.get(`http://localhost:5000/user/${cookies.userName}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//user/${cookies.userName}`).then((response) => {
       setUser(response.data.result);
     });
   }, []);
@@ -89,7 +89,7 @@ function Header() {
           <Grid container spacing={3} alignItems="center" key={item.idUser}>
             <Grid item>
               <SuiAvatar
-                src={`http://localhost:5000/images/${item.userAvatar}`}
+                src={`https://server-easyenglish.herokuapp.com//images/${item.userAvatar}`}
                 alt="profile-image"
                 variant="rounded"
                 size="xl"

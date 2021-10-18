@@ -25,7 +25,7 @@ const EditCourse = () => {
     data.append("desSource", newDesSource);
     data.append("imageSource", newFileSelected);
     data.append("private", 0);
-    Axios.put(`http://localhost:5000/source/${idSource}`, data, {
+    Axios.put(`https://server-easyenglish.herokuapp.com//source/${idSource}`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -83,7 +83,7 @@ const EditCourse = () => {
                     ) : (
                       <img
                         className="preview-image"
-                        src={`http://localhost:5000/images/${imageSource}`}
+                        src={`https://server-easyenglish.herokuapp.com//images/${imageSource}`}
                         alt="preview"
                       />
                     )}

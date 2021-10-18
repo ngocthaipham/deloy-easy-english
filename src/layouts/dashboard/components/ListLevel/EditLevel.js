@@ -26,7 +26,7 @@ const EditLevel = () => {
     data.append("idSource", idSource);
     data.append("imageLevel", newFileSelected);
     data.append("userName", cookies.userName);
-    Axios.put(`http://localhost:5000/level/${idLevel}`, data, {
+    Axios.put(`https://server-easyenglish.herokuapp.com//level/${idLevel}`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -74,7 +74,7 @@ const EditLevel = () => {
                     ) : (
                       <img
                         className="preview-image"
-                        src={`http://localhost:5000/images/${imageLevel}`}
+                        src={`https://server-easyenglish.herokuapp.com//images/${imageLevel}`}
                         alt="preview"
                       />
                     )}

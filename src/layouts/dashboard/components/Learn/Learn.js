@@ -33,12 +33,12 @@ const Learn = () => {
     return i;
   }
   useEffect(() => {
-    Axios.get(`http://localhost:5000/vocabs/${idLevel}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//vocabs/${idLevel}`).then((response) => {
       setWordList(response.data);
     });
   }, []);
   useEffect(() => {
-    Axios.get(`http://localhost:5000/learningPoint/${idLevel}`).then((response) => {
+    Axios.get(`https://server-easyenglish.herokuapp.com//learningPoint/${idLevel}`).then((response) => {
       setLearningPoint(response.data);
     });
   }, [clicked]);
@@ -47,16 +47,16 @@ const Learn = () => {
     setClicked(true);
     setSelected(optionSelected);
     if (option === question[currentWord][currentQuestionGroup][currentQuestion].answer) {
-      Axios.put(`http://localhost:5000/updateLearningPoint/${id}`, {
+      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
         learningPoint: correct,
       });
-      audio = new Audio("http://localhost:5000/audios/right-answer.mp3");
+      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/right-answer.mp3");
       audio.play();
     } else {
-      Axios.put(`http://localhost:5000/updateLearningPoint/${id}`, {
+      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
         learningPoint: inCorrect,
       });
-      audio = new Audio("http://localhost:5000/audios/wrong-answer.wav");
+      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/wrong-answer.wav");
       audio.play();
     }
     if (currentQuestion < 2) {
@@ -108,7 +108,7 @@ const Learn = () => {
               <img
                 className="test-image"
                 style={{ height: "500px", width: "750px" }}
-                src={`http://localhost:5000/images/${item.imageWord}`}
+                src={`https://server-easyenglish.herokuapp.com//images/${item.imageWord}`}
                 alt="learn"
               />
             ),
@@ -130,7 +130,7 @@ const Learn = () => {
                   style={{ "background-color": "transparent", border: "none" }}
                   type="button"
                   onClick={() => {
-                    const audios = new Audio(`http://localhost:5000/audios/${item.audioWord}`);
+                    const audios = new Audio(`https://server-easyenglish.herokuapp.com//audios/${item.audioWord}`);
                     audios.play();
                   }}
                 >
@@ -177,7 +177,7 @@ const Learn = () => {
               <img
                 className="test-image"
                 style={{ height: "500px", width: "750px" }}
-                src={`http://localhost:5000/images/${item.imageWord}`}
+                src={`https://server-easyenglish.herokuapp.com//images/${item.imageWord}`}
                 alt="learn"
               />
             ),
@@ -199,7 +199,7 @@ const Learn = () => {
                   style={{ "background-color": "transparent", border: "none" }}
                   type="button"
                   onClick={() => {
-                    const audios = new Audio(`http://localhost:5000/audios/${item.audioWord}`);
+                    const audios = new Audio(`https://server-easyenglish.herokuapp.com//audios/${item.audioWord}`);
                     audios.play();
                   }}
                 >
@@ -283,7 +283,7 @@ const Learn = () => {
                   <img
                     className="test-image"
                     style={{ height: "500px", width: "750px" }}
-                    src={`http://localhost:5000/images/${wordList[currentWord].imageWord}`}
+                    src={`https://server-easyenglish.herokuapp.com//images/${wordList[currentWord].imageWord}`}
                     alt="learn"
                   />
                   <div>
@@ -292,7 +292,7 @@ const Learn = () => {
                       type="button"
                       onClick={() => {
                         const audios = new Audio(
-                          `http://localhost:5000/audios/${wordList[currentWord].audioWord}`
+                          `https://server-easyenglish.herokuapp.com//audios/${wordList[currentWord].audioWord}`
                         );
                         audios.play();
                       }}
