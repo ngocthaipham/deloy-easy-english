@@ -15,7 +15,7 @@ const RatingList = (props) => {
 
   const { idSource } = useParams();
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//rating/${idSource}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/rating/${idSource}`).then((response) => {
       setRatingList(response.data);
     });
   }, [showModal]);

@@ -3,13 +3,13 @@ import Axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Table from "examples/Table";
 import SuiButton from "components/SuiButton";
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import SuiBox from "components/SuiBox";
+import LoadingHOC from "../../../../LoadingHOC.js";
 
 import "./ListLevel.css";
 
-const ListLevel = () => {
+export const ListLevel = (props) => {
+  const { setIsLoading } = props;
   const [levelList, setLevelList] = useState([]);
   const { idSource } = useParams();
   const columns = [
@@ -34,14 +34,14 @@ const ListLevel = () => {
           Action: (
             <div className="action-level-flex">
               <div className="action-level-item">
-                <Link to={`/home/${idSource}/level/${level.idLevel}/${level.level}/word`}>
+                <Link to={`/my-course/${idSource}/level/${level.idLevel}/${level.level}/word`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     View
                   </SuiButton>
                 </Link>
               </div>
               <div className="action-level-item">
-                <Link to={`/home/${idSource}/level/${level.idLevel}/${level.level}/learn`}>
+                <Link to={`/my-course/${idSource}/level/${level.idLevel}/${level.level}/learn`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Learn
                   </SuiButton>
@@ -49,7 +49,7 @@ const ListLevel = () => {
               </div>
               <div className="action-level-item">
                 <Link
-                  to={`/home/${idSource}/level/edit/${level.idLevel}/${level.level}/${level.imageLevel}`}
+                  to={`/my-course/${idSource}/level/edit/${level.idLevel}/${level.level}/${level.imageLevel}`}
                 >
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Edit
@@ -57,7 +57,7 @@ const ListLevel = () => {
                 </Link>
               </div>
               <div className="action-level-item">
-                <Link to={`/home/${idSource}/level/learned/${level.idLevel}/${level.level}`}>
+                <Link to={`/my-course/${idSource}/level/learned/${level.idLevel}/${level.level}`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Learned Word
                   </SuiButton>
@@ -65,17 +65,17 @@ const ListLevel = () => {
               </div>
 
               <div className="action-level-item">
-                <Link to={`/home/${idSource}/level/unlearned/${level.idLevel}/${level.level}`}>
+                <Link to={`/my-course/${idSource}/level/unlearned/${level.idLevel}/${level.level}`}>
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Unlearned Word
                   </SuiButton>
                 </Link>
               </div>
               <div className="action-level-item">
-              <Link to={`/home/${idSource}/level/${level.idLevel}/${level.level}/review`}>
-                <SuiButton variant="outlined" size="small" buttonColor="info">
-                  Classic Review
-                </SuiButton>
+                <Link to={`/my-course/${idSource}/level/${level.idLevel}/${level.level}/review`}>
+                  <SuiButton variant="outlined" size="small" buttonColor="info">
+                    Classic Review
+                  </SuiButton>
                 </Link>
               </div>
               <div className="action-level-item">
@@ -87,16 +87,17 @@ const ListLevel = () => {
           ),
         }))
       );
+      setIsLoading(false);
     });
   }, []);
   return (
     <>
-      <DashboardLayout>
-        <DashboardNavbar />
+      {/* <DashboardLayout>
+        <DashboardNavbar /> */}
         <div>
           <SuiButton
             component={Link}
-            to={`/home/${idSource}/level/new`}
+            to={`/my-course/${idSource}/level/new`}
             variant="outlined"
             size="small"
             buttonColor="info"
@@ -104,13 +105,13 @@ const ListLevel = () => {
             Add a new level +
           </SuiButton>
         </div>
-        <SuiBox py={3}>
-          <SuiBox mb={3}>
-            <Table columns={columns} rows={levelList} />
+          <SuiBox py={3}>
+            <SuiBox mb={3}>
+              <Table columns={columns} rows={levelList} />
+            </SuiBox>
           </SuiBox>
-        </SuiBox>
-      </DashboardLayout>
+      {/* </DashboardLayout> */}
     </>
   );
 };
-export default ListLevel;
+export default LoadingHOC(ListLevel);

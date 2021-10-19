@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import SuiBox from "components/SuiBox";
 import AudioImg from "assets/images/flaticon/sound.png";
 import Table from "examples/Table";
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import LoadingHOC from "../../../../LoadingHOC.js";
 
-const LearnedWord = () => {
+
+export const LearnedWord = (props) => {
+  const { setIsLoading } = props;
   const [wordList, setWordList] = useState([]);
   const { idLevel } = useParams();
   const columns = [
@@ -19,7 +20,7 @@ const LearnedWord = () => {
   ];
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//vocabsLearn/${idLevel}/1`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/vocabsLearn/${idLevel}/1`).then((response) => {
       setWordList(
         response.data.result.map((word) => ({
           Word: word.vocab,
@@ -28,7 +29,7 @@ const LearnedWord = () => {
             <img
               className="word-image"
               style={{ height: "150px", width: "200px" }}
-              src={`https://server-easyenglish.herokuapp.com//images/${word.imageWord}`}
+              src={`${process.env.REACT_APP_API_ENDPOINT}/images/${word.imageWord}`}
               alt="a"
             />
           ),
@@ -37,7 +38,7 @@ const LearnedWord = () => {
               style={{ "background-color": "transparent", border: "none" }}
               type="button"
               onClick={() => {
-                const audio = new Audio(`https://server-easyenglish.herokuapp.com//audios/${word.audioWord}`);
+                const audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${word.audioWord}`);
                 audio.play();
               }}
             >
@@ -55,19 +56,17 @@ const LearnedWord = () => {
           Point: <p>{word.learningPoint}</p>,
         }))
       );
+      setIsLoading(false);
     });
   }, []);
   return (
     <>
-      <DashboardLayout>
-        <DashboardNavbar />
         <SuiBox py={3}>
           <SuiBox mb={3}>
             <Table columns={columns} rows={wordList} />
           </SuiBox>
         </SuiBox>
-      </DashboardLayout>
     </>
   );
 };
-export default LearnedWord;
+export default LoadingHOC(LearnedWord);

@@ -18,7 +18,7 @@ const AddWord = () => {
   const [fileSelected, setFileSelected] = useState();
   const [audioSelected, setAudioSelected] = useState();
   const [previewImage, setPreviewImage] = useState(
-    "https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg"
+    `${process.env.REACT_APP_API_ENDPOINT}/images/image1627300361179.jpg`
   );
   const [previewAudio, setPreviewAudio] = useState();
   const [cookies] = useCookies();
@@ -35,14 +35,14 @@ const AddWord = () => {
     data.append("imageWord", fileSelected);
     data.append("audioWord", audioSelected);
     data.append("userName", cookies.userName);
-    Axios.post(`https://server-easyenglish.herokuapp.com//word`, data, {
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/word`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      setPreviewImage("https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg");
+      setPreviewImage(`${process.env.REACT_APP_API_ENDPOINT}/images/image1627300361179.jpg`);
       setPreviewAudio();
-      history.push(`/home/${idSource}/level/${idLevel}/${level}/word`);
+      history.push(`/my-course/${idSource}/level/${idLevel}/${level}/word`);
     });
   };
   return (

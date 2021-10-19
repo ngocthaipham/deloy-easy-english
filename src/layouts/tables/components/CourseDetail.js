@@ -21,7 +21,7 @@ const CourseDetail = () => {
   ];
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//words/${idLevel}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/words/${idLevel}`).then((response) => {
       console.log(response.data.result.idLevel);
       setWordList(
         response.data.result.map((word) => ({
@@ -31,7 +31,7 @@ const CourseDetail = () => {
             <img
               className="word-image"
               style={{ height: "150px", width: "200px" }}
-              src={`https://server-easyenglish.herokuapp.com//images/${word.imageWord}`}
+              src={`${process.env.REACT_APP_API_ENDPOINT}/images/${word.imageWord}`}
               alt="a"
             />
           ),
@@ -40,7 +40,7 @@ const CourseDetail = () => {
               style={{ "background-color": "transparent", border: "none" }}
               type="button"
               onClick={() => {
-                const audio = new Audio(`https://server-easyenglish.herokuapp.com//audios/${word.audioWord}`);
+                const audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${word.audioWord}`);
                 audio.play();
               }}
             >

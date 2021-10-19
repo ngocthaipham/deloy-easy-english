@@ -8,9 +8,11 @@ import Card from "@mui/material/Card";
 import SuiBox from "components/SuiBox";
 import SuiTypography from "components/SuiTypography";
 import Star from "assets/images/flaticon/star.png";
+import LoadingHOCCollapse from "../../../LoadingHOCCollapse";
 import "./Explore.css";
 
-const Explore = () => {
+export const Explore = (props) => {
+  const { setIsLoading } = props ;
   const [courseList, setCourseList] = useState([]);
   const [favoriteCourseList, setFavoriteCourseList] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
@@ -32,6 +34,7 @@ const Explore = () => {
         setCourseList(response.data.result);
         setTotalCourse(response.data.totalCourse);
         setCoursePerPage(response.data.coursePerPage);
+        setIsLoading(false);
         console.log(response.data);
       }
     );
@@ -203,4 +206,4 @@ const Explore = () => {
     </>
   );
 };
-export default Explore;
+export default LoadingHOCCollapse(Explore);

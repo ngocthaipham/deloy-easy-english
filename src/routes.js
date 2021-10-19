@@ -36,6 +36,8 @@ Coded by www.creative-tim.com
 */
 
 // Soft UI Dashboard React layouts
+// import { lazy, Suspense } from 'react';
+// import ReactLoading from 'react-loading';
 import Dashboard from "layouts/dashboard";
 import AddCourse from "layouts/dashboard/components/ListCourse/AddCourse";
 import EditCourse from "layouts/dashboard/components/ListCourse/EditCourse";
@@ -71,6 +73,9 @@ import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 // import CreditCard from "examples/Icons/CreditCard";
 // import Cube from "examples/Icons/Cube";
+// import { Route } from "react-router-dom";
+// const Dashboard = lazy(() => import("layouts/dashboard"));
+// const Tables = lazy(() => import("layouts/tables"));
 
 const routes = [
   {
@@ -98,9 +103,9 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "My course",
-    key: "myCourse",
-    route: "/home",
+    name: "My Course",
+    key: "my-course",
+    route: "/my-course",
     icon: <Shop size="12px" />,
     component: Dashboard,
     noCollapse: true,
@@ -109,77 +114,77 @@ const routes = [
     type: "route",
     name: "AddCourse",
     key: "AddCourse",
-    route: "/home/course/new",
+    route: "/my-course/course/new",
     component: AddCourse,
   },
   {
     type: "route",
     name: "EditCourse",
     key: "EditCourse",
-    route: "/home/course/edit/:idSource/:nameSource/:desSource/:imageSource/0",
+    route: "/my-course/course/edit/:idSource/:nameSource/:desSource/:imageSource/0",
     component: EditCourse,
   },
   {
     type: "route",
     name: "LevelList",
     key: "LevelList",
-    route: "/home/:idSource/level",
+    route: "/my-course/:idSource/level",
     component: ListLevel,
   },
   {
     type: "route",
     name: "AddLevel",
     key: "AddLevel",
-    route: "/home/:idSource/level/new",
+    route: "/my-course/:idSource/level/new",
     component: AddLevel,
   },
   {
     type: "route",
     name: "EditLevel",
     key: "EditLevel",
-    route: "/home/:idSource/level/edit/:idLevel/:level/:imageLevel",
+    route: "/my-course/:idSource/level/edit/:idLevel/:level/:imageLevel",
     component: EditLevel,
   },
   {
     type: "route",
     name: "LearnedWord",
     key: "LearnedWord",
-    route: "/home/:idSource/level/learned/:idLevel/:level",
+    route: "/my-course/:idSource/level/learned/:idLevel/:level",
     component: LearnedWord,
   },
   {
     type: "route",
     name: "UnLearnedWord",
     key: "UnLearnedWord",
-    route: "/home/:idSource/level/unlearned/:idLevel/:level",
+    route: "/my-course/:idSource/level/unlearned/:idLevel/:level",
     component: UnLearnedWord,
   },
   {
     type: "route",
     name: "Learn",
     key: "Learn",
-    route: "/home/:idSource/level/:idLevel/:level/learn",
+    route: "/my-course/:idSource/level/:idLevel/:level/learn",
     component: Learn,
   },
   {
     type: "route",
     name: "ClassicReview",
     key: "ClassicReview",
-    route: "/home/:idSource/level/:idLevel/:level/review",
+    route: "/my-course/:idSource/level/:idLevel/:level/review",
     component: ClassicReview,
   },
   {
     type: "route",
     name: "WordList",
     key: "WordList",
-    route: "/home/:idSource/level/:idLevel/:level/word",
+    route: "/my-course/:idSource/level/:idLevel/:level/word",
     component: ListWord,
   },
   {
     type: "route",
     name: "AddWord",
     key: "AddWord",
-    route: "/home/:idSource/level/:idLevel/:level/word/new",
+    route: "/my-course/:idSource/level/:idLevel/:level/word/new",
     component: AddWord,
   },
   {
@@ -187,14 +192,14 @@ const routes = [
     name: "EditWord",
     key: "EditWord",
     route:
-    "/home/:idSource/level/:idLevel/:level/word/edit/:id/:vocab/:meaning/:imageWord/:audioWord",
+    "/my-course/:idSource/level/:idLevel/:level/word/edit/:id/:vocab/:meaning/:imageWord/:audioWord",
     component: EditWord,
   },
   {
     type: "route",
     name: "SpeedTest",
     key: "SpeedTest",
-    route: "/home/:idSource/level/:idLevel/:level/word/speedtest",
+    route: "/my-course/:idSource/level/:idLevel/:level/word/speedtest",
     component: SpeedTest,
   },
   {
@@ -281,7 +286,7 @@ const unSignInRoute = [
     type: "collapse",
     name: "My Course",
     key: "myCourse",
-    route: "/home",
+    route: "/my-course",
     icon: <Shop size="12px" />,
     component: Dashboard,
     noCollapse: true,

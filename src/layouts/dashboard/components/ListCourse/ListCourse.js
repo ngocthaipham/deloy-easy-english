@@ -9,19 +9,26 @@ import SuiButton from "components/SuiButton";
 // import Icon from "@mui/material/Icon";
 // import MenuIcon from "@mui/icons-material/Menu";
 import DefaultProjectCard from "examples/Cards/ProjectCards/DefaultProjectCard";
+// import ReactLoading from 'react-loading';
+import LoadingHOCCollapse from "../../../../LoadingHOCCollapse.js"
 // import styles from "layouts/dashboard/components/BuildByDevelopers/styles";
 import "./ListCourse.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const ListCourse = () => {
+export const ListCourse = (props) => {
   const [coursesList, setCourseList] = useState([]);
+  const { setIsLoading } = props;
   const [cookies] = useCookies();
+  const history = useHistory();
+  if(!cookies.token) {
+    history.push(`/authentication/sign-in`);
+  }
   // const classes = styles();
-
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${cookies.userName}/0/page1`).then(
       (response) => {
         setCourseList(response.data.result);
+        setIsLoading(false);
       }
     );
   }, []);
@@ -31,7 +38,7 @@ const ListCourse = () => {
       <div style={{ "padding-bottom": "10px" }}>
         <SuiButton
           component={Link}
-          to="/home/course/new"
+          to="/my-course/course/new"
           variant="outlined"
           size="small"
           buttonColor="info"
@@ -53,7 +60,7 @@ const ListCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/home/${course.idSource}/level`}
+                      to={`/my-course/${course.idSource}/level`}
                       variant="outlined"
                       size="small"
                       buttonColor="info"
@@ -64,7 +71,7 @@ const ListCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/home/course/edit/${course.idSource}/${course.nameSource}/${course.desSource}/${course.imageSource}/0`}
+                      to={`/my-course/course/edit/${course.idSource}/${course.nameSource}/${course.desSource}/${course.imageSource}/0`}
                       variant="outlined"
                       size="small"
                       buttonColor="info"
@@ -75,7 +82,7 @@ const ListCourse = () => {
                   <div className="action-course-item">
                     <SuiButton
                       component={Link}
-                      to={`/home/${course.idSource}/level`}
+                      to={`/my-course/${course.idSource}/level`}
                       variant="outlined"
                       size="small"
                       buttonColor="error"
@@ -88,70 +95,9 @@ const ListCourse = () => {
             </div>
           ))}
         </div>
-      </Card>
-      {/* <Card key={course.idSource} sx={{ width: 1000, "z-index": 5 }}>
-            <SuiBox p={2}>
-              <Grid container spacing={3}>
-                <Grid item xs={12} lg={6}>
-                  <SuiBox display="flex" flexDirection="column" height="100%">
-                    <SuiTypography variant="h5" fontWeight="bold" gutterBottom>
-                      {course.nameSource}
-                    </SuiTypography>
-                    <SuiBox mb={6}>
-                      <SuiTypography variant="body2" textColor="text">
-                        {course.desSource}
-                      </SuiTypography>
-                    </SuiBox>
-                    <SuiTypography
-                      component="a"
-                      href="#"
-                      variant="button"
-                      textColor="text"
-                      fontWeight="medium"
-                      customClass={classes.buildByDevelopers_button}
-                    >
-                      Read More
-                      <Icon className="font-bold">arrow_forward</Icon>
-                    </SuiTypography>
-                  </SuiBox>
-                </Grid>
-                <Grid item xs={12} lg={5} className="ml-auto relative">
-                  <div className="option-menu">
-                    <span>
-                      <MenuIcon className="font-bold" />
-                    </span>
-                    <div className="menu-list-container">
-                      <button type="button" className="menu-item first-menu-item">
-                        Add to private
-                      </button>
-                      <button type="button" className="menu-item">
-                        Edit
-                      </button>
-                      <button type="button" className="menu-item last-menu-item">
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    <Link to={`/dashboard/${course.idSource}/level`}>
-                      <div>
-                        <SuiBox
-                          component="img"
-                          src={`https://server-easyenglish.herokuapp.com//images/${course.imageSource}`}
-                          alt="source-image"
-                          width="300px"
-                          height="200px"
-                          pt={3}
-                        />
-                      </div>
-                    </Link>
-                  </div>
-                </Grid>
-              </Grid>
-            </SuiBox>
-          </Card> */}
+      </Card> 
     </>
   );
 };
 
-export default ListCourse;
+export default LoadingHOCCollapse(ListCourse);

@@ -23,7 +23,7 @@ const ClassicReview = () => {
   let audio = new Audio();
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//vocabs/${idLevel}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/vocabs/${idLevel}`).then((response) => {
       setWordList(response.data);
     });
   }, []);
@@ -52,7 +52,7 @@ const ClassicReview = () => {
               <img
                 className="test-image"
                 style={{ height: "500px", width: "750px" }}
-                src={`https://server-easyenglish.herokuapp.com//images/${item.imageWord}`}
+                src={`${process.env.REACT_APP_API_ENDPOINT}/images/${item.imageWord}`}
                 alt="learn"
               />
             ),
@@ -75,7 +75,7 @@ const ClassicReview = () => {
                   style={{ "background-color": "transparent", border: "none" }}
                   type="button"
                   onClick={() => {
-                    const audios = new Audio(`https://server-easyenglish.herokuapp.com//audios/${item.audioWord}`);
+                    const audios = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${item.audioWord}`);
                     audios.play();
                   }}
                 >
@@ -124,7 +124,7 @@ const ClassicReview = () => {
               <img
                 className="test-image"
                 style={{ height: "500px", width: "750px" }}
-                src={`https://server-easyenglish.herokuapp.com//images/${item.imageWord}`}
+                src={`${process.env.REACT_APP_API_ENDPOINT}/images/${item.imageWord}`}
                 alt="learn"
               />
             ),
@@ -147,7 +147,7 @@ const ClassicReview = () => {
                   style={{ "background-color": "transparent", border: "none" }}
                   type="button"
                   onClick={() => {
-                    const audios = new Audio(`https://server-easyenglish.herokuapp.com//audios/${item.audioWord}`);
+                    const audios = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${item.audioWord}`);
                     audios.play();
                   }}
                 >
@@ -190,7 +190,7 @@ const ClassicReview = () => {
               <img
                 className="test-image"
                 style={{ height: "500px", width: "750px" }}
-                src={`https://server-easyenglish.herokuapp.com//images/${item.imageWord}`}
+                src={`${process.env.REACT_APP_API_ENDPOINT}/images/${item.imageWord}`}
                 alt="learn"
               />
             ),
@@ -207,7 +207,7 @@ const ClassicReview = () => {
                   style={{ "background-color": "transparent", border: "none" }}
                   type="button"
                   onClick={() => {
-                    const audios = new Audio(`https://server-easyenglish.herokuapp.com//audios/${item.audioWord}`);
+                    const audios = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${item.audioWord}`);
                     audios.play();
                   }}
                 >
@@ -283,16 +283,16 @@ const ClassicReview = () => {
     setClicked(true);
     setSelected(optionSelected);
     if (option === question[currentQuestion].answer) {
-      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
+      Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/updateLearningPoint/${id}`, {
         learningPoint: correct,
       });
-      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/right-answer.mp3");
+      audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/right-answer.mp3`);
       audio.play();
     } else {
-      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
+      Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/updateLearningPoint/${id}`, {
         learningPoint: inCorrect,
       });
-      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/wrong-answer.wav");
+      audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/wrong-answer.wav`);
       audio.play();
     }
     if (currentQuestion < question.length - 1) {

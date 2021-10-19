@@ -16,7 +16,7 @@ const AddLevel = () => {
   const [level, setLevel] = useState("");
   const [fileSelected, setFileSelected] = useState();
   const [previewImage, setPreviewImage] = useState(
-    "https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg"
+    `${process.env.REACT_APP_API_ENDPOINT}/images/image1627300361179.jpg`
   );
   const [cookies] = useCookies();
   const history = useHistory();
@@ -28,13 +28,13 @@ const AddLevel = () => {
     data.append("idSource", idSource);
     data.append("imageLevel", fileSelected);
     data.append("userName", cookies.userName);
-    Axios.post(`https://server-easyenglish.herokuapp.com//level`, data, {
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/level`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      setPreviewImage("https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg");
-      history.push(`/home/${idSource}/level`);
+      setPreviewImage(`${process.env.REACT_APP_API_ENDPOINT}/images/image1627300361179.jpg`);
+      history.push(`/my-course/${idSource}/level`);
     });
   };
   return (

@@ -14,13 +14,13 @@ const CourseRating = (props) => {
 
   const ratingCourse = (rate) => {
     setRating(rate);
-    Axios.post(`https://server-easyenglish.herokuapp.com//rating/${idSource}`, {
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/rating/${idSource}`, {
       star: rate,
       byUser: cookies.userName,
     }).then((response) => {
       alert(response.data);
     });
-    Axios.put(`https://server-easyenglish.herokuapp.com//putRating/${idSource}`).then((response) => {
+    Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/putRating/${idSource}`).then((response) => {
       alert(response.data);
       props.updateRefreshState(!props.refreshState);
     });

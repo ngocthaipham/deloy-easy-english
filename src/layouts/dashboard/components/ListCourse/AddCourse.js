@@ -17,7 +17,7 @@ const AddCourse = () => {
   const [desSource, setDesSource] = useState("");
   const [fileSelected, setFileSelected] = useState();
   const [previewImage, setPreviewImage] = useState(
-    "https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg"
+    `${process.env.REACT_APP_API_ENDPOINT}/images/image1627300361179.jpg`
   );
   const [cookies] = useCookies();
   const history = useHistory();
@@ -28,13 +28,13 @@ const AddCourse = () => {
     data.append("desSource", desSource);
     data.append("userName", cookies.userName);
     data.append("imageSource", fileSelected);
-    Axios.post(`https://server-easyenglish.herokuapp.com//source`, data, {
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/source`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      setPreviewImage("https://server-easyenglish.herokuapp.com//images/image1627300361179.jpg");
-      history.push(`/home`);
+      setPreviewImage(`${process.env.REACT_APP_API_ENDPOINT}/images/image1627300361179.jpg`);
+      history.push(`/my-course`);
     });
   };
   return (

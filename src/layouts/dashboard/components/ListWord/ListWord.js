@@ -4,14 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import Table from "examples/Table";
 import SuiBox from "components/SuiBox";
 import SuiButton from "components/SuiButton";
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import LoadingHOC from "../../../../LoadingHOC.js";
 import "./ListWord.css";
 import AudioImg from "assets/images/flaticon/sound.png";
 
 // import { useCookies } from "react-cookie";
 
-const ListWord = () => {
+export const ListWord = (props) => {
+  const { setIsLoading } = props;
   const [wordList, setWordList] = useState([]);
   const { idSource, idLevel, level } = useParams();
   const columns = [
@@ -61,7 +61,7 @@ const ListWord = () => {
             <div className="action-word-flex">
               <div className="action-word-item">
                 <Link
-                  to={`/home/${idSource}/level/${idLevel}/${level}/word/edit/${word.id}/${word.vocab}/${word.meaning}/${word.imageWord}/${word.audioWord}`}
+                  to={`/my-course/${idSource}/level/${idLevel}/${level}/word/edit/${word.id}/${word.vocab}/${word.meaning}/${word.imageWord}/${word.audioWord}`}
                 >
                   <SuiButton variant="outlined" size="small" buttonColor="info">
                     Edit
@@ -78,17 +78,16 @@ const ListWord = () => {
           ),
         }))
       );
+      setIsLoading(false);
     });
   }, []);
   return (
     <>
-      <DashboardLayout>
-        <DashboardNavbar />
         <div className="word-btn-container">
           <div className="word-btn">
             <SuiButton
               component={Link}
-              to={`/home/${idSource}/level/${idLevel}/${level}/word/new`}
+              to={`/my-course/${idSource}/level/${idLevel}/${level}/word/new`}
               variant="outlined"
               size="small"
               buttonColor="info"
@@ -100,7 +99,7 @@ const ListWord = () => {
             <SuiButton
               pl={2}
               component={Link}
-              to={`/home/${idSource}/level/${idLevel}/${level}/word/speedtest`}
+              to={`/my-course/${idSource}/level/${idLevel}/${level}/word/speedtest`}
               variant="outlined"
               size="small"
               buttonColor="info"
@@ -114,8 +113,7 @@ const ListWord = () => {
             <Table columns={columns} rows={wordList} />
           </SuiBox>
         </SuiBox>
-      </DashboardLayout>
     </>
   );
 };
-export default ListWord;
+export default LoadingHOC(ListWord);

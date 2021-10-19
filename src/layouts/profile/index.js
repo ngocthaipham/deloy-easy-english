@@ -39,13 +39,16 @@ import Footer from "examples/Footer";
 
 // Overview page components
 import Header from "layouts/profile/components/Header";
+import LoadingHOC from "../../LoadingHOCCollapse.js";
+
 // import PlatformSettings from "layouts/profile/components/PlatformSettings";
 
 // Data
 
 // Images
 
-function Overview() {
+export function Overview(props) {
+  const { setIsLoading } = props;
   const [cookies] = useCookies();
   const [user, setUser] = useState([]);
   const [learningList, setLearningList] = useState([]);
@@ -56,13 +59,14 @@ function Overview() {
   ];
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//user/${cookies.userName}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/${cookies.userName}`).then((response) => {
       setUser(response.data.result);
+      setIsLoading(false);
       console.log(user);
     });
   }, []);
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//time/${cookies.userName}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/time/${cookies.userName}`).then((response) => {
       setLearningList(
         response.data.result.map((item) => ({
           Date: item.date,
@@ -71,56 +75,22 @@ function Overview() {
         }))
       );
       console.log(learningList);
+      setIsLoading(false);
     });
   }, []);
   return (
-    <DashboardLayout>
+    <>
+     <DashboardLayout>
       <Header />
-      {/* <SuiBox mt={5} mb={3}>
-        {user.map((item) => (
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} xl={4}>
-              <ProfileInfoCard
-                info={{
-                  totaltime: `${item.totalTime}`,
-                  totalscore: `${item.totalScore}`,
-                  target: `${item.target}`,
-                  streak: `${item.streak}`,
-                }}
-                social={[
-                  {
-                    link: "https://www.facebook.com/CreativeTim/",
-                    icon: <FacebookIcon />,
-                    color: "facebook",
-                  },
-                  {
-                    link: "https://twitter.com/creativetim",
-                    icon: <TwitterIcon />,
-                    color: "twitter",
-                  },
-                  {
-                    link: "https://www.instagram.com/creativetimofficial/",
-                    icon: <InstagramIcon />,
-                    color: "instagram",
-                  },
-                ]}
-                action={{ route: "", tooltip: "Edit Profile" }}
-              />
-            </Grid>
-            <Grid item xs={12} xl={4}>
-              <p>a</p>
-            </Grid>
-          </Grid>
-        ))}
-      </SuiBox> */}
       <SuiBox py={3}>
         <SuiBox mb={3}>
           <Table columns={columns} rows={learningList} />
         </SuiBox>
       </SuiBox>
       <Footer />
-    </DashboardLayout>
+     </DashboardLayout>
+    </>
   );
 }
 
-export default Overview;
+export default LoadingHOC(Overview);

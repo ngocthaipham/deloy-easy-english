@@ -60,7 +60,7 @@ function SignUp() {
     if (repeatPassword !== userPassword) {
       alert("both password must match");
     }
-    Axios.post("https://server-easyenglish.herokuapp.com//signup", data).then((response) => {
+    Axios.post(`${process.env.REACT_APP_API_ENDPOINT}/signup`, data).then((response) => {
       console.log(response.data);
       history.push(`/authentication/sign-in`);
     });

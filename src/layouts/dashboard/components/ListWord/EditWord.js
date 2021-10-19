@@ -34,12 +34,12 @@ const EditWord = () => {
     data.append("imageWord", newFileSelected);
     data.append("audioWord", newAudioSelected);
     data.append("userName", cookies.userName);
-    Axios.put(`https://server-easyenglish.herokuapp.com//word/${id}`, data, {
+    Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/word/${id}`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      history.push(`/home/${idSource}/level/${idLevel}/${level}/word`);
+      history.push(`/my-course/${idSource}/level/${idLevel}/${level}/word`);
     });
   };
   return (
@@ -90,7 +90,7 @@ const EditWord = () => {
                     ) : (
                       <img
                         className="preview-image"
-                        src={`https://server-easyenglish.herokuapp.com//images/${imageWord}`}
+                        src={`${process.env.REACT_APP_API_ENDPOINT}/images/${imageWord}`}
                         alt="preview"
                       />
                     )}
@@ -127,7 +127,7 @@ const EditWord = () => {
                         style={{ "background-color": "transparent", border: "none" }}
                         type="button"
                         onClick={() => {
-                          const audio = new Audio(`https://server-easyenglish.herokuapp.com//audios/${audioWord}`);
+                          const audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${audioWord}`);
                           audio.play();
                         }}
                       >

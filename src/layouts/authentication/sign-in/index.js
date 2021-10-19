@@ -54,7 +54,7 @@ function SignIn() {
         setCookie("token", response.data.token, { path: "/" });
         setCookie("userId", response.data.userId, { path: "/" });
         setCookie("userName", response.data.userName, { path: "/" });
-        history.push(`/home`);
+        history.push(`/my-course`);
       })
       .catch(() => {
         setMessageError("Usernames or Password is incorrect");

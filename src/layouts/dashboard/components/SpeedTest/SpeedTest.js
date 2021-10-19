@@ -108,7 +108,7 @@ const SpeedReview = () => {
                   type="button"
                   className="go-back-btn"
                   onClick={() => {
-                    history.push(`/home/${idSource}/level/${idLevel}/${level}/word`);
+                    history.push(`/my-course/${idSource}/level/${idLevel}/${level}/word`);
                   }}
                 >
                   Back

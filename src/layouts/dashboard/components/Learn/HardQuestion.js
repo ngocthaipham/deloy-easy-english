@@ -21,13 +21,13 @@ const HardQuestion = (props) => {
   let audio = new Audio();
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//vocabs/${idLevel}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/vocabs/${idLevel}`).then((response) => {
       setWordList(response.data);
     });
   }, []);
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//learningPoint/${idLevel}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/learningPoint/${idLevel}`).then((response) => {
       props.updateLearningPoint(response.data);
     });
   }, [props.clicked]);
@@ -49,7 +49,7 @@ const HardQuestion = (props) => {
               <img
                 className="test-image"
                 style={{ height: "500px", width: "750px" }}
-                src={`https://server-easyenglish.herokuapp.com//images/${item.imageWord}`}
+                src={`${process.env.REACT_APP_API_ENDPOINT}/images/${item.imageWord}`}
                 alt="learn"
               />
             ),
@@ -65,7 +65,7 @@ const HardQuestion = (props) => {
                   style={{ "background-color": "transparent", border: "none" }}
                   type="button"
                   onClick={() => {
-                    const audios = new Audio(`https://server-easyenglish.herokuapp.com//audios/${item.audioWord}`);
+                    const audios = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/${item.audioWord}`);
                     audios.play();
                   }}
                 >
@@ -95,16 +95,16 @@ const HardQuestion = (props) => {
       props.updateClicked(true);
     }, 2000);
     if (answer === answerSubmit) {
-      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
+      Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/updateLearningPoint/${id}`, {
         learningPoint: correct,
       });
-      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/right-answer.mp3");
+      audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/right-answer.mp3`);
       audio.play();
     } else {
-      Axios.put(`https://server-easyenglish.herokuapp.com//updateLearningPoint/${id}`, {
+      Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/updateLearningPoint/${id}`, {
         learningPoint: inCorrect,
       });
-      audio = new Audio("https://server-easyenglish.herokuapp.com//audios/wrong-answer.wav");
+      audio = new Audio(`${process.env.REACT_APP_API_ENDPOINT}/audios/wrong-answer.wav`);
       audio.play();
       setTimeout(() => {
         setCurrentQuestion(0);

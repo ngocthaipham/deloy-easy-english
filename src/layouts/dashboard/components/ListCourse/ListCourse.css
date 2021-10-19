@@ -25,3 +25,15 @@
 .action-course-item {
   margin-left: 5px;
 }
+
+.loading {
+  min-height: 750px;
+  /* margin: 350px auto 0 auto; */
+  justify-content: center;
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* margin-left: 100px; */
+}
+.spin {
+ margin: auto;
+}

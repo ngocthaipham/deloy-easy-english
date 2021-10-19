@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import Card from "@mui/material/Card";
 import SuiButton from "components/SuiButton";
 import SuiBox from "components/SuiBox";
 import DefaultProjectCard from "examples/Cards/ProjectCards/DefaultProjectCard";
 import Axios from "axios";
+import LoadingHOCCollapse from "../../../LoadingHOCCollapse.js"
 
-const FavoriteCourse = () => {
+export const FavoriteCourse = (props) => {
+  const { setIsLoading } = props;
   const [favoriteCourse, setFavoriteCourse] = useState([]);
   const [cookies] = useCookies();
+  const history = useHistory();
+  if(!cookies.token) {
+    history.push(`/authentication/sign-in`);
+  }
 
   useEffect(() => {
-    Axios.get(`https://server-easyenglish.herokuapp.com//favorites/${cookies.userName}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/favorites/${cookies.userName}`).then((response) => {
       setFavoriteCourse(response.data.result);
+      setIsLoading(false);
     });
   }, []);
 
   function removeFromFavorite(id) {
-    Axios.put(`https://server-easyenglish.herokuapp.com//favorite/${cookies.userName}`, {
+    Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/favorite/${cookies.userName}`, {
       idSource: id,
     }).then((response) => {
       alert(response.data);
@@ -33,7 +40,7 @@ const FavoriteCourse = () => {
             <div className="card-item" key={course.idSource}>
               <SuiBox p={2}>
                 <DefaultProjectCard
-                  image={`https://server-easyenglish.herokuapp.com//images/${course.imageFavoriteCourse}`}
+                  image={`${process.env.REACT_APP_API_ENDPOINT}/images/${course.imageFavoriteCourse}`}
                   title={`${course.nameFavoriteCourse}`}
                   description={`${course.desFavoriteCourse}`}
                 />
@@ -70,4 +77,4 @@ const FavoriteCourse = () => {
     </>
   );
 };
-export default FavoriteCourse;
+export default LoadingHOCCollapse(FavoriteCourse);

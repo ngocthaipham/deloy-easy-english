@@ -98,7 +98,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const handleCloseMenu = () => setOpenMenu(false);
 
   const logout = () => {
-    Axios.get("https://server-easyenglish.herokuapp.com//logout").then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/logout`).then((response) => {
       alert(response.data);
       removeCookie("token");
       removeCookie("userId");

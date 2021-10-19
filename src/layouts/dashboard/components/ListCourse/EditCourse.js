@@ -25,12 +25,12 @@ const EditCourse = () => {
     data.append("desSource", newDesSource);
     data.append("imageSource", newFileSelected);
     data.append("private", 0);
-    Axios.put(`https://server-easyenglish.herokuapp.com//source/${idSource}`, data, {
+    Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/source/${idSource}`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     }).then(() => {
-      history.push(`/home`);
+      history.push(`/my-course`);
     });
   };
   return (
@@ -83,7 +83,7 @@ const EditCourse = () => {
                     ) : (
                       <img
                         className="preview-image"
-                        src={`https://server-easyenglish.herokuapp.com//images/${imageSource}`}
+                        src={`${process.env.REACT_APP_API_ENDPOINT}/images/${imageSource}`}
                         alt="preview"
                       />
                     )}
