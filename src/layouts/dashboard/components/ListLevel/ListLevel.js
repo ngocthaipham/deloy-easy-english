@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { Link, useParams } from "react-router-dom";
 import Table from "examples/Table";
 import SuiButton from "components/SuiButton";
@@ -79,7 +81,7 @@ export const ListLevel = (props) => {
                 </Link>
               </div>
               <div className="action-level-item">
-                <SuiButton variant="outlined" size="small" buttonColor="error">
+                <SuiButton variant="outlined" size="small" buttonColor="error" onClick={() => {confirmDelete(level.idLevel)}}>
                   Delete
                 </SuiButton>
               </div>
@@ -90,6 +92,28 @@ export const ListLevel = (props) => {
       setIsLoading(false);
     });
   }, []);
+
+  const removeLevel = (id) => {
+    Axios.delete(`${process.env.REACT_APP_API_ENDPOINT}/levels/${id}`).then(() => {
+      setLevelList(levelList.filter((level) => level.idLevel !== id));
+    });
+  };
+  const confirmDelete = (id) => {
+    confirmAlert({
+      title: "Confirm to delete",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {removeLevel(id)}
+        },
+        {
+          label: "No"
+          // onClick: () => alert("Click No")
+        }
+      ]
+    });
+  };
   return (
     <>
       {/* <DashboardLayout>

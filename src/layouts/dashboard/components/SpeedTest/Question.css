@@ -19,3 +19,7 @@
     margin-bottom: 10px;
     height: 80px;
 }
+.answer-btn .MuiButton-root {
+    height: 80px;
+    width: 100%;
+}

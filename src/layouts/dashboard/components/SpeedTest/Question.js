@@ -195,7 +195,7 @@ const Question = (props) => {
             <div className="answer">
               <SuiBox>
                 <Card sx={{ height: "80px", justifyContent: "center", margin: "0px 5px" }}>
-                  {/* <div  style={{height: "80px"}}> */}
+                  <div className="answer-btn" style={{height: "80px"}}>
                   <SuiButton
                     variant="text"
                     size="large"
@@ -214,7 +214,7 @@ const Question = (props) => {
                     {option}
                     {/* </div> */}
                   </SuiButton>
-                  {/* </div> */}
+                  </div>
                 </Card>
               </SuiBox>
             </div>

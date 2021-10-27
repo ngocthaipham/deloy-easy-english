@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { Link, useParams } from "react-router-dom";
 import Table from "examples/Table";
 import SuiBox from "components/SuiBox";
@@ -70,7 +72,7 @@ export const ListWord = (props) => {
               </div>
 
               <div className="action-word-item">
-                <SuiButton variant="outlined" size="small" buttonColor="error">
+                <SuiButton variant="outlined" size="small" buttonColor="error" onClick={()=>{confirmDelete(word.id)}}>
                   Delete
                 </SuiButton>
               </div>
@@ -81,6 +83,27 @@ export const ListWord = (props) => {
       setIsLoading(false);
     });
   }, []);
+  const removeWord = (id) => {
+    Axios.delete(`${process.env.REACT_APP_API_ENDPOINT}/words/${id}`).then(() => {
+      setWordList(wordList.filter((word) => word.id !== id));
+    });
+  };
+  const confirmDelete = (id) => {
+    confirmAlert({
+      title: "Confirm to delete",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {removeWord(id)}
+        },
+        {
+          label: "No"
+          // onClick: () => alert("Click No")
+        }
+      ]
+    });
+  };
   return (
     <>
         <div className="word-btn-container">

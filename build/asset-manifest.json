@@ -1,28 +1,31 @@
 {
   "files": {
-    "main.css": "/soft-ui-dashboard-react/static/css/main.960cca83.chunk.css",
-    "main.js": "/soft-ui-dashboard-react/static/js/main.160d66ad.chunk.js",
-    "main.js.map": "/soft-ui-dashboard-react/static/js/main.160d66ad.chunk.js.map",
-    "runtime-main.js": "/soft-ui-dashboard-react/static/js/runtime-main.07dae6c2.js",
-    "runtime-main.js.map": "/soft-ui-dashboard-react/static/js/runtime-main.07dae6c2.js.map",
-    "static/js/2.31430b8d.chunk.js": "/soft-ui-dashboard-react/static/js/2.31430b8d.chunk.js",
-    "static/js/2.31430b8d.chunk.js.map": "/soft-ui-dashboard-react/static/js/2.31430b8d.chunk.js.map",
-    "index.html": "/soft-ui-dashboard-react/index.html",
-    "static/css/main.960cca83.chunk.css.map": "/soft-ui-dashboard-react/static/css/main.960cca83.chunk.css.map",
-    "static/js/2.31430b8d.chunk.js.LICENSE.txt": "/soft-ui-dashboard-react/static/js/2.31430b8d.chunk.js.LICENSE.txt",
-    "static/media/curved-6.71ee1d1c.jpg": "/soft-ui-dashboard-react/static/media/curved-6.71ee1d1c.jpg",
-    "static/media/curved0.d146ec6e.jpg": "/soft-ui-dashboard-react/static/media/curved0.d146ec6e.jpg",
-    "static/media/curved14.12c9ea54.jpg": "/soft-ui-dashboard-react/static/media/curved14.12c9ea54.jpg",
-    "static/media/logo-spotify.e83cf56c.svg": "/soft-ui-dashboard-react/static/media/logo-spotify.e83cf56c.svg",
-    "static/media/logo.446eadb1.png": "/soft-ui-dashboard-react/static/media/logo.446eadb1.png",
-    "static/media/sound.ec572983.png": "/soft-ui-dashboard-react/static/media/sound.ec572983.png",
-    "static/media/team-2.e725aef8.jpg": "/soft-ui-dashboard-react/static/media/team-2.e725aef8.jpg",
-    "static/media/white-curved.a5b7db66.jpeg": "/soft-ui-dashboard-react/static/media/white-curved.a5b7db66.jpeg"
+    "main.css": "/static/css/main.bf99fe99.chunk.css",
+    "main.js": "/static/js/main.b5269eb3.chunk.js",
+    "main.js.map": "/static/js/main.b5269eb3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.34f1fc46.js",
+    "runtime-main.js.map": "/static/js/runtime-main.34f1fc46.js.map",
+    "static/css/2.11d356fb.chunk.css": "/static/css/2.11d356fb.chunk.css",
+    "static/js/2.42f48b1e.chunk.js": "/static/js/2.42f48b1e.chunk.js",
+    "static/js/2.42f48b1e.chunk.js.map": "/static/js/2.42f48b1e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.11d356fb.chunk.css.map": "/static/css/2.11d356fb.chunk.css.map",
+    "static/css/main.bf99fe99.chunk.css.map": "/static/css/main.bf99fe99.chunk.css.map",
+    "static/js/2.42f48b1e.chunk.js.LICENSE.txt": "/static/js/2.42f48b1e.chunk.js.LICENSE.txt",
+    "static/media/curved-6.71ee1d1c.jpg": "/static/media/curved-6.71ee1d1c.jpg",
+    "static/media/curved0.d146ec6e.jpg": "/static/media/curved0.d146ec6e.jpg",
+    "static/media/curved14.12c9ea54.jpg": "/static/media/curved14.12c9ea54.jpg",
+    "static/media/logo-spotify.e83cf56c.svg": "/static/media/logo-spotify.e83cf56c.svg",
+    "static/media/logo.446eadb1.png": "/static/media/logo.446eadb1.png",
+    "static/media/sound.ec572983.png": "/static/media/sound.ec572983.png",
+    "static/media/team-2.e725aef8.jpg": "/static/media/team-2.e725aef8.jpg",
+    "static/media/white-curved.a5b7db66.jpeg": "/static/media/white-curved.a5b7db66.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.07dae6c2.js",
-    "static/js/2.31430b8d.chunk.js",
-    "static/css/main.960cca83.chunk.css",
-    "static/js/main.160d66ad.chunk.js"
+    "static/js/runtime-main.34f1fc46.js",
+    "static/css/2.11d356fb.chunk.css",
+    "static/js/2.42f48b1e.chunk.js",
+    "static/css/main.bf99fe99.chunk.css",
+    "static/js/main.b5269eb3.chunk.js"
   ]
 }

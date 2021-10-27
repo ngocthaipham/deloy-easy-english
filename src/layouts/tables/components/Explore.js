@@ -12,7 +12,7 @@ import LoadingHOCCollapse from "../../../LoadingHOCCollapse";
 import "./Explore.css";
 
 export const Explore = (props) => {
-  const { setIsLoading } = props ;
+  const { setIsLoading } = props;
   const [courseList, setCourseList] = useState([]);
   const [favoriteCourseList, setFavoriteCourseList] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
@@ -22,11 +22,13 @@ export const Explore = (props) => {
   const [cookies] = useCookies();
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/favorites/${cookies.userName}`).then(
-      (response) => {
-        setFavoriteCourseList(response.data.result);
-      }
-    );
+    if (cookies.token) {
+      Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/favorites/${cookies.userName}`).then(
+        (response) => {
+          setFavoriteCourseList(response.data.result);
+        }
+      );
+    }
   }, [isClicked]);
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${0}/page${currentPage}`).then(
@@ -92,7 +94,7 @@ export const Explore = (props) => {
                         </div>
                         <div className="explore-des-item">
                           <SuiTypography variant="body2" textColor="warning">
-                            {course.star} <img style={{height: "15px"}} src={Star} alt="star" />
+                            {course.star} <img style={{ height: "15px" }} src={Star} alt="star" />
                           </SuiTypography>
                         </div>
                       </div>
@@ -139,7 +141,7 @@ export const Explore = (props) => {
                           </div>
                           <div className="explore-des-item">
                             <SuiTypography variant="body2" textColor="warning">
-                              {course.star} <img style={{height: "15px"}} src={Star} alt="star" />
+                              {course.star} <img style={{ height: "15px" }} src={Star} alt="star" />
                             </SuiTypography>
                           </div>
                         </div>
@@ -178,7 +180,7 @@ export const Explore = (props) => {
                           </div>
                           <div className="explore-des-item explore-des-2">
                             <SuiTypography variant="body2" textColor="warning">
-                              {course.star} <img style={{height: "15px"}} src={Star} alt="star" />
+                              {course.star} <img style={{ height: "15px" }} src={Star} alt="star" />
                             </SuiTypography>
                           </div>
                         </div>

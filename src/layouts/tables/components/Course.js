@@ -14,7 +14,7 @@ const Course = () => {
 
   const { idSource } = useParams();
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/level/${idSource}`).then((response) => {
+    Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/level/16`).then((response) => {
       setCourseItem(response.data);
       console.log(response.data);
     });

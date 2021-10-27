@@ -11,20 +11,24 @@ import LoadingHOCCollapse from "../../../LoadingHOCCollapse.js";
 export const PrivateCourse = (props) => {
   const { setIsLoading } = props;
   const [coursesList, setCourseList] = useState([]);
+  const [onPageChange, setOnPageChange] = useState(false);
   const [cookies] = useCookies();
   const history = useHistory();
   if(!cookies.token) {
     history.push(`/authentication/sign-in`);
   }
-  // const classes = styles();
 
   useEffect(() => {
     Axios.get(`${process.env.REACT_APP_API_ENDPOINT}/sources/${cookies.userName}/1/page1`).then((response) => {
       setCourseList(response.data.result);
       setIsLoading(false);
     });
-  }, []);
-
+  }, [onPageChange]);
+  const setPublicCourse = (id) => {
+    Axios.put(`${process.env.REACT_APP_API_ENDPOINT}/publicCourse/${id}`, { private: 0 }).then((response) => {
+      setOnPageChange(!onPageChange);
+    });
+  };
   return (
     <>
       <div style={{ "padding-bottom": "10px" }}>
@@ -69,6 +73,16 @@ export const PrivateCourse = (props) => {
                       buttonColor="info"
                     >
                       Edit
+                    </SuiButton>
+                  </div>
+                  <div className="action-course-item">
+                    <SuiButton
+                      variant="outlined"
+                      size="small"
+                      buttonColor="info"
+                      onClick={()=> {setPublicCourse(course.idSource)}}
+                    >
+                      Public
                     </SuiButton>
                   </div>
                   <div className="action-course-item">

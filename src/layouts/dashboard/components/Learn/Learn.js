@@ -343,27 +343,11 @@ const Learn = () => {
               learningPoint[currentWord].learningPoint < 10 &&
               question[currentWord][currentQuestionGroup][currentQuestion].options.map(
                 (option, index) => (
-                  //   <button
-                  //     type="button"
-                  //     // key={index}
-                  //     style={color(option, index)}
-                  //     disabled={disabled()}
-                  //     className="answer"
-                  //     onClick={() => {
-                  //       click(
-                  //         question[currentWord][currentQuestionGroup][currentQuestion].options[index],
-                  //         index,
-                  //         question[currentWord][currentQuestionGroup][currentQuestion].id,
-                  //         question[currentWord][currentQuestionGroup][currentQuestion]
-                  //           .correctSelectedPoint,
-                  //         question[currentWord][currentQuestionGroup][currentQuestion]
-                  //           .inCorrectSelectedPoint
-                  //       );
-                  //     }}
-                  //   >
+               
                   <div className="answer">
                     <SuiBox>
                       <Card sx={{ height: "80px", justifyContent: "center", margin: "0px 5px" }}>
+                        <div className="answer-btn">
                         <SuiButton
                           variant="text"
                           size="large"
@@ -390,6 +374,7 @@ const Learn = () => {
                           {option}
                           {/* </button> */}
                         </SuiButton>
+                        </div>
                       </Card>
                     </SuiBox>
                   </div>

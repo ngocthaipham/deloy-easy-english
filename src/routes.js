@@ -35,9 +35,7 @@ Coded by www.creative-tim.com
   10. The `component` key is used to store the component of its route.
 */
 
-// Soft UI Dashboard React layouts
-// import { lazy, Suspense } from 'react';
-// import ReactLoading from 'react-loading';
+
 import Dashboard from "layouts/dashboard";
 import AddCourse from "layouts/dashboard/components/ListCourse/AddCourse";
 import EditCourse from "layouts/dashboard/components/ListCourse/EditCourse";
@@ -55,11 +53,9 @@ import SpeedTest from "layouts/dashboard/components/SpeedTest/SpeedTest";
 import Tables from "layouts/tables";
 import Course from "layouts/tables/components/Course";
 import CourseDetail from "layouts/tables/components/CourseDetail";
-// import Billing from "layouts/billing";
 import Favorite from "layouts/favorite";
 import Private from "layouts/privateCourse";
-// import VirtualReality from "layouts/virtual-reality";
-// import RTL from "layouts/rtl";
+
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
@@ -67,15 +63,9 @@ import SignUp from "layouts/authentication/sign-up";
 // Soft UI Dashboard React icons
 import Shop from "examples/Icons/Shop";
 import Office from "examples/Icons/Office";
-// import Settings from "examples/Icons/Settings";
 import Document from "examples/Icons/Document";
 import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
-// import CreditCard from "examples/Icons/CreditCard";
-// import Cube from "examples/Icons/Cube";
-// import { Route } from "react-router-dom";
-// const Dashboard = lazy(() => import("layouts/dashboard"));
-// const Tables = lazy(() => import("layouts/tables"));
 
 const routes = [
   {
@@ -205,7 +195,7 @@ const routes = [
   {
     type: "collapse",
     name: "Favorite Course",
-    key: "Favorite",
+    key: "favorite",
     route: "/favorite",
     icon: <Office size="12px" />,
     component: Favorite,
@@ -214,7 +204,7 @@ const routes = [
   {
     type: "collapse",
     name: "Private Course",
-    key: "Private",
+    key: "private",
     route: "/private",
     icon: <Office size="12px" />,
     component: Private,
@@ -295,7 +285,7 @@ const unSignInRoute = [
   {
     type: "collapse",
     name: "Favorite Course",
-    key: "Favorite",
+    key: "favorite",
     route: "/favorite",
     icon: <Office size="12px" />,
     component: Favorite,
@@ -304,7 +294,7 @@ const unSignInRoute = [
   {
     type: "collapse",
     name: "Private Course",
-    key: "Private",
+    key: "private",
     route: "/private",
     icon: <Office size="12px" />,
     component: Private,

@@ -326,6 +326,7 @@ const ClassicReview = () => {
                 <div className="answer">
                   <SuiBox>
                     <Card sx={{ height: "80px", justifyContent: "center", margin: "0px 5px" }}>
+                      <div className="answer-btn">
                       <SuiButton
                         variant="text"
                         size="large"
@@ -347,6 +348,7 @@ const ClassicReview = () => {
                       >
                         {option}
                       </SuiButton>
+                      </div>
                     </Card>
                   </SuiBox>
                 </div>

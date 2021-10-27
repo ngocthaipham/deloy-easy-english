@@ -21,6 +21,7 @@ export default makeStyles(({ palette, functions, borders, boxShadows }) => {
   const { linearGradient } = functions;
   const { borderRadius: radius } = borders;
 
+  console.log(palette);
   const greyColors = {
     "grey-100": grey[100],
     "grey-200": grey[200],
